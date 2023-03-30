@@ -1,0 +1,4499 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<schema
+	targetNamespace="http://www.sars.gov.za/enterpriseMessagingModel/GMD/BaseTypes/xml/schemas/version/53.15"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://www.sars.gov.za/enterpriseMessagingModel/GMD/BaseTypes/xml/schemas/version/53.15">
+
+	<annotation>
+		<documentation>
+			Changed on 14/06/2011 by Nisch:
+				Added "IJ" enumeration to PaymentDisposalType
+		</documentation>
+		<documentation>
+			Changed on 10/06/2011 by Miguel: 
+				Added simple types: ScheduleType, PartType, SectionType, DutyUnitType, DutyRateType, DutyUnitCodeType, TradeAgreementTypeType, FormulaCodeType, ClassificationRangeType, PerishableLevelType
+				Added enumeration: DELETED to ChangedIndType 
+		</documentation>
+		<documentation>
+			Changed on 07/06/2011 by Wilson Kopman: Added a simple type NoBankAccountReasonType 
+		</documentation>
+		<documentation>
+			Changed on 09/05/2011 by Miguel, Removed MessagBodyType and changed TaxRefNo to allow for 8 alphanumerics as well as 10 digits 
+		</documentation>
+	</annotation>
+	
+	<simpleType name="PartyIDType">
+		<annotation>
+			<documentation></documentation>
+		</annotation>
+		<restriction base="long">
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EntityTypeType">
+		<restriction base="string">
+			<enumeration value="INDIVIDUAL"></enumeration>
+			<enumeration value="SOLE_PROPRIETOR"></enumeration>
+			<enumeration value="FOREIGN_RESIDENT"></enumeration>
+			<enumeration value="SOUTH_AFRICAN_RESIDENT"></enumeration>
+			<enumeration value="SOUTH AFRICAN_NON_RESIDENT"></enumeration>
+			<enumeration value="FOREIGNER_NON_RESIDENT"></enumeration>
+			<enumeration value="PUBLIC_CO"></enumeration>
+			<enumeration value="PRIVATE_CO"></enumeration>
+			<enumeration value="CO_WITHOUT_MOTIVES_FOR_GAIN_SEC21"></enumeration>
+			<enumeration value="CO_LIMITED_BY_GUARANTEE"></enumeration>
+			<enumeration value="FOREIGN_EXTERNAL_CO"></enumeration>
+			<enumeration value="EXTERNAL_CO_SEC21A"></enumeration>
+			<enumeration value="CO_REG_TRANSVAAL_LAW"></enumeration>
+			<enumeration value="PROFESSIONAL_CO"></enumeration>
+			<enumeration value="UNLIMITED_CO"></enumeration>
+			<enumeration value="CLOSE_CORPORATION"></enumeration>
+			<enumeration value="PRIMARY_COOPERATIVE"></enumeration>
+			<enumeration value="SECONDARY_COOPERATIVE"></enumeration>
+			<enumeration value="TERTIARY_COOPERATIVE"></enumeration>
+			<enumeration value="INTERVIVOS_TRUST"></enumeration>
+			<enumeration value="MORTIS_CAUSA_TRUST"></enumeration>
+			<enumeration value="SPECIAL_A_TRUST"></enumeration>
+			<enumeration value="SPECIAL_B_TRUST"></enumeration>
+			<enumeration value="EXEMPT_TRUST"></enumeration>
+			<enumeration value="PARTNERSHIP"></enumeration>
+			<enumeration value="GOVERNMENT_ENTITY"></enumeration>
+			<enumeration value="ASSOC_NOT_FOR_GAIN"></enumeration>
+			<enumeration value="WELFARE_ORG"></enumeration>
+			<enumeration value="CLUB"></enumeration>
+			<enumeration value="UNICORPORATED_BODY_OF_PERSONS"></enumeration>
+			<enumeration value="SECTIONAL_TITLE_ENTITY"></enumeration>
+			<enumeration value="FOREIGN_GOV_ORG"></enumeration>
+			<enumeration value="RETIREMENT_FUND"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="YesNoIndType">
+		<restriction base="string">
+			<enumeration value="Y"></enumeration>
+			<enumeration value="N"></enumeration>
+			<enumeration value="1"></enumeration>
+			<enumeration value="0"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PostalCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+	<simpleType name="TelNoType">
+		<restriction base="string">
+			<pattern value="\d{0,15}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FaxNoType">
+		<restriction base="string">
+			<pattern value="\d{0,11}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+	<simpleType name="TaxYearType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TypeOfTaxType">
+		<restriction base="string">
+			<enumeration value="INCOME_TAX"></enumeration>
+			<enumeration value="PAYE"></enumeration>
+			<enumeration value="VAT"></enumeration>
+			<enumeration value="CUSTOMS"></enumeration>
+			<enumeration value="EXCISE"></enumeration>
+			<enumeration value="UIF"></enumeration>
+			<enumeration value="SDL"></enumeration>
+			<enumeration value="DIESEL"></enumeration>
+			<enumeration value="PROVISIONAL_TAX"></enumeration>
+			<enumeration value="STC"></enumeration>
+			<enumeration value="APT"></enumeration>
+			<enumeration value="ASSESSED_TAX"></enumeration>
+			<enumeration value="ADMIN_PENALTY"></enumeration>
+			<enumeration value="TRANSFER_DUTY"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="FYEType">
+		<restriction base="string">
+			<pattern value="\d{2}|\d{4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ExemptionEmployeeCatType">
+		<restriction base="string">
+			<enumeration value="NPE"></enumeration>
+			<enumeration value="PBO"></enumeration>
+			<enumeration value="PPE"></enumeration>
+			<enumeration value="MCE"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+	<simpleType name="ForeignActivityType">
+		<restriction base="string">
+			<enumeration value="S"></enumeration>
+			<enumeration value="E"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+	<simpleType name="AccountBasisType">
+		<restriction base="string">
+			<enumeration value="P"></enumeration>
+			<enumeration value="I"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ValueBasedOnType">
+		<restriction base="string">
+			<enumeration value="A"></enumeration>
+			<enumeration value="E"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="ConcessionCatType">
+		<restriction base="string">
+			<enumeration value="ON_LAND"></enumeration>
+			<enumeration value="OFFSHORE_AND_ELEC_GEN"></enumeration>
+			<enumeration value="RAIL_HARBOUR"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="FinancialInfoPeriodType">
+		<restriction base="string">
+			<enumeration value="EST_CURRENT_FIN_YEAR"></enumeration>
+			<enumeration value="ACT_PREV_FIN_YEAR"></enumeration>
+			<enumeration value="ACT_BEFORE_PREV_FIN_YEAR"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="LanguageType">
+		<restriction base="string">
+			<enumeration value="0"></enumeration>
+			<enumeration value="1"></enumeration>
+			<enumeration value="2"></enumeration>
+			<enumeration value="3"></enumeration>
+			<enumeration value="4"></enumeration>
+			<enumeration value="5"></enumeration>
+			<enumeration value="6"></enumeration>
+		</restriction>
+	</simpleType>
+<simpleType name="WarehouseNoTextType">
+
+	<annotation>
+
+	<documentation>Added since version 47 for CO2</documentation> 
+
+	</annotation>
+
+	<restriction base="string">
+
+	<pattern value=".{0,11}" /> 
+
+	</restriction>
+
+	</simpleType>
+
+
+
+	<simpleType name="CustomsExciseRegCatType">
+		<restriction base="string">
+			<enumeration value="RE"></enumeration>
+			<enumeration value="CA"></enumeration>
+			<enumeration value="RI"></enumeration>
+			<enumeration value="SU"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContraventionType">
+		<restriction base="string">
+			<enumeration value="FAILED_COMPLY"></enumeration>
+			<enumeration value="IMPOSED_COMM"></enumeration>
+			<enumeration value="CONVICTED_OFFENCE"></enumeration>
+			<enumeration value="CONVICTED_DISHONESTY"></enumeration>
+			<enumeration value="FALSE_STATEMENT"></enumeration>
+			<enumeration value="BEEN_INSOLVENT"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+	<simpleType name="TradeAgreementType">
+		<restriction base="string">
+			<enumeration value="AGOA_AGREEMENT"></enumeration>
+			<enumeration value="SADC_AGREEMENT"></enumeration>
+			<enumeration value="EC_AGREEMENT"></enumeration>
+			<enumeration value="APPROVED_EXP_AGREEMENT"></enumeration>
+			<enumeration value="OTHER_PRODUCER"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="CommunicationAreaType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="MasAreaType">
+		<restriction base="string">
+			<enumeration value="MANIFESTS"></enumeration>
+			<enumeration value="GATE_INFO"></enumeration>
+			<enumeration value="DISCHARGE_INFO"></enumeration>
+			<enumeration value="SCHEDULE_INFO"></enumeration>
+			<enumeration value="OUTTURN_REPORTS"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CommAreaType">
+		<restriction base="string">
+			<enumeration value="EXP_BILLS_ENTRY"></enumeration>
+			<enumeration value="REFUNDS_APPS"></enumeration>
+			<enumeration value="ELEC_MSGS"></enumeration>
+			<enumeration value="BORDER_MOVEMENT"></enumeration>
+			<enumeration value="IMP_BILLS_ENTRY"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="AirCargoReportCatType">
+		<restriction base="string">
+			<enumeration value="CARRIER"></enumeration>
+			<enumeration value="CARGO_CARRIER"></enumeration>
+			<enumeration value="DEGROUP_OPERATOR"></enumeration>
+			<enumeration value="MASTER_CARRIER"></enumeration>
+			<enumeration value="TRANSIT_SHED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SeaCargoReportCatType">
+		<restriction base="string">
+			<enumeration value="CARRIER"></enumeration>
+			<enumeration value="CARGO_CARRIER"></enumeration>
+			<enumeration value="DEPOT_OPERATOR"></enumeration>
+			<enumeration value="MASTER_CARRIER"></enumeration>
+			<enumeration value="CONTAINER_TERMINAL"></enumeration>
+			<enumeration value="WHARF_OPERATOR"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+	<simpleType name="ClientCatType">
+		<restriction base="string">
+			<enumeration value="BENEFICATOR"></enumeration>
+			<enumeration value="DEALER"></enumeration>
+			<enumeration value="PRODUCER"></enumeration>
+			<enumeration value="PERMIT_HOLDER"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="LicenseNoType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="WhUsageType">
+		<restriction base="string">
+			<enumeration value="TP"></enumeration>
+			<enumeration value="WO"></enumeration>
+			<enumeration value="PD"></enumeration>
+			<enumeration value="PC"></enumeration>
+			<enumeration value="MB"></enumeration>
+			<enumeration value="TB"></enumeration>
+			<enumeration value="BD"></enumeration>
+			<enumeration value="LB"></enumeration>
+			<enumeration value="SP"></enumeration>
+			<enumeration value="SS"></enumeration>
+			<enumeration value="AV"></enumeration>
+			<enumeration value="PE"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="ExGoodsType">
+		<restriction base="string">
+			<enumeration value="T"></enumeration>
+			<enumeration value="B"></enumeration>
+			<enumeration value="S"></enumeration>
+			<enumeration value="W"></enumeration>
+			<enumeration value="K"></enumeration>
+			<enumeration value="F"></enumeration>
+			<enumeration value="J"></enumeration>
+			<enumeration value="E"></enumeration>
+			<enumeration value=""></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="CcaLocationType">
+		<restriction base="string">
+			<enumeration value="EL"></enumeration>
+			<enumeration value="OR"></enumeration>
+			<enumeration value="PE"></enumeration>
+			<enumeration value="RD"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	
+
+
+	<simpleType name="CustomsWhPremiseUtilType">
+		<restriction base="string">
+			<enumeration value="PU"></enumeration>
+			<enumeration value="PR"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustomsWhPremiseUsageType">
+		<restriction base="string">
+			<enumeration value="DI"></enumeration>
+			<enumeration value="IG"></enumeration>
+			<enumeration value="IS"></enumeration>
+			<enumeration value="VM"></enumeration>
+			<enumeration value="SM"></enumeration>
+			<enumeration value="DE"></enumeration>
+			<enumeration value="DF"></enumeration>
+			<enumeration value="DL"></enumeration>
+			<enumeration value="DS"></enumeration>
+			<enumeration value="DT"></enumeration>
+			<enumeration value="LG"></enumeration>
+			<enumeration value="ID"></enumeration>
+			<enumeration value="OD"></enumeration>
+			<enumeration value="BD"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TransportModeType">
+		<restriction base="string">
+			<enumeration value="RO"></enumeration>
+			<enumeration value="AI"></enumeration>
+			<enumeration value="SE"></enumeration>
+			<enumeration value="RA"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="CcaeWhUsageType">
+		<restriction base="string">
+			<enumeration value="LP"></enumeration>
+			<enumeration value="CC"></enumeration>
+			<enumeration value="IG"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CcaeManufacturingWhUsageType">
+		<restriction base="string">
+			<enumeration value="EX"></enumeration>
+			<enumeration value="FU"></enumeration>
+			<enumeration value="EN"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="GoodsManufacturedType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+
+
+
+
+	<simpleType name="IDNoType">
+		<restriction base="string">
+			<pattern value="\d{13}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="PassportNoType">
+		<restriction base="string">
+			<pattern value="\w{0,16}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CountryType">
+		<restriction base="string">
+			<pattern value="\w{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CellNoType">
+		<restriction base="string">
+			<pattern value="\d{0,15}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EmailType">
+		<restriction base="string">
+			<pattern value=".{0,53}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PostalAddressLineType">
+		<restriction base="string">
+			<pattern value=".{0,100}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CapacityType">
+		<restriction base="string">
+			<enumeration value="PO"></enumeration>
+			<enumeration value="CA"></enumeration>
+			<enumeration value="PR"></enumeration>
+			<enumeration value="TR"></enumeration>
+			<enumeration value="AO"></enumeration>
+			<enumeration value="SP"></enumeration>
+			<enumeration value="TP"></enumeration>
+			<enumeration value="LR"></enumeration>
+			<enumeration value="GU"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="TaxPractionerRegNoType">
+		<restriction base="string">
+			<pattern value="\w{0,9}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="BusTradeClassType">
+		<restriction base="string">
+			<pattern value=".{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FSPLicenseNoType">
+		<restriction base="string">
+			<pattern value="\d{0,14}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BusTradeActivityType">
+        <annotation>
+        	<documentation>Represents a description of the taxpayer's local business trade activities</documentation>
+        </annotation>
+        <restriction base="string">
+			<pattern value=".{0,75}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustomsExciseClientTypeNoType">
+		<restriction base="string">
+			<pattern value="\w{0,8}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ClientTypeType">
+		<restriction base="string">
+			<enumeration value="IMP"></enumeration>
+			<enumeration value="EXP"></enumeration>
+			<enumeration value="RE3"></enumeration>
+			<enumeration value="AGO"></enumeration>
+			<enumeration value="WH1"></enumeration>
+			<enumeration value="EC"></enumeration>
+			<enumeration value="PR"></enumeration>
+			<enumeration value="RE1"></enumeration>
+			<enumeration value="IDZ"></enumeration>
+			<enumeration value="CCA"></enumeration>
+			<enumeration value="WH2"></enumeration>
+			<enumeration value="CA"></enumeration>
+			<enumeration value="RH"></enumeration>
+			<enumeration value="WH3"></enumeration>
+			<enumeration value="WH4"></enumeration>
+			<enumeration value="CDP"></enumeration>
+			<enumeration value="DDP"></enumeration>
+			<enumeration value="SHP"></enumeration>
+			<enumeration value="COP"></enumeration>
+			<enumeration value="RE2"></enumeration>
+			<enumeration value="EE1"></enumeration>
+			<enumeration value="BIM"></enumeration>
+			<enumeration value="EE2"></enumeration>
+			<enumeration value="DEL"></enumeration>
+			<enumeration value="APT"></enumeration>
+			<enumeration value="APT1"></enumeration>
+			<enumeration value="AKS"></enumeration>
+			<enumeration value="WH5"></enumeration>
+			<enumeration value="WH6"></enumeration>
+			<enumeration value="WH7"></enumeration>
+			<enumeration value="LDF"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FinPeriodType">
+		<restriction base="string">
+			<enumeration value="0_3"></enumeration>
+			<enumeration value="4_5"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="DesignationTypeType">
+		<restriction base="string">
+			<enumeration value="S"></enumeration>
+			<enumeration value="A"></enumeration>
+			<enumeration value="I"></enumeration>
+			<enumeration value="O"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="SearchIndicatorType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="OfficeType">
+		<restriction base="string">
+			<pattern value=".{0,100}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="YearType">
+		<restriction base="string">
+			<pattern value="\d{4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="FormTypeType">
+		<restriction base="string">
+			<maxLength value="59"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AreaType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="SARSBranchType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DistrictType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+
+
+
+
+	<simpleType name="FullNamesType">
+		<restriction base="string">
+			<maxLength value="53"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="SurnameType">
+		<restriction base="string">
+			<maxLength value="53"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="InitialsType">
+		<restriction base="string">
+			<maxLength value="5"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="MaritalStatusType">
+		<restriction base="string">
+			<enumeration value="N"></enumeration>
+			<enumeration value="I"></enumeration>
+			<enumeration value="O"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UnitStreetNoType">
+		<restriction base="string">
+			<pattern value="\w{0,5}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ComplexStreetNameType">
+		<restriction base="string">
+			<pattern value=".{0,27}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SuburbType">
+		<restriction base="string">
+			<pattern value=".{0,36}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CityType">
+		<restriction base="string">
+			<pattern value=".{0,36}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AccountNoType">
+		<restriction base="string">
+			<pattern value="\d{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="BankAccountNoType">
+		<restriction base="string">
+			<pattern value="\d{0,17}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BranchNoType">
+		<restriction base="string">
+			<pattern value="\d{0,6}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AccountHolderType">
+		<restriction base="string">
+			<pattern value=".{0,200}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="AccountTypeType">
+		<restriction base="string">
+			<enumeration value="CURRENT"></enumeration>
+			<enumeration value="SAVINGS"></enumeration>
+			<enumeration value="TRANSMISSION"></enumeration>
+			<enumeration value="BOND"></enumeration>
+			<enumeration value="SUBSCRIPTION_SHARE"></enumeration>
+			<enumeration value="CREDIT"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BankNameType">
+		<restriction base="string">
+			<pattern value=".{0,50}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BranchNameType">
+		<restriction base="string">
+			<pattern value=".{0,50}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OrganisationNameType">
+		<restriction base="string">
+			<maxLength value="120"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OrganisationRegNoType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WebAddressType">
+		<restriction base="string">
+			<pattern value=".{0,255}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EstateTypeType">
+		<restriction base="string">
+			<pattern value="\w{0,39}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AmtType">
+		<restriction base="string">
+			<pattern value="\d{0,8}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PracticeRegNoType">
+		<restriction base="string">
+			<pattern value="\w{0,15}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProfessionalMembershipBodyType">
+		<restriction base="string">
+			<pattern value="\w{0,11}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="DeptNameType">
+		<restriction base="string">
+			<pattern value=".{0,53}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ContactPersonCapacityType">
+		<restriction base="string">
+			<pattern value=".{0,50}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CustomsDeclEnvType">
+		<restriction base="string">
+			<enumeration value="LESS_4_PER_YEAR"></enumeration>
+			<enumeration value="LESS_R2000"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ItemType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TariffType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ItemCodeType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CheckDigitType">
+		<restriction base="string">
+			<pattern value="\d{0,2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TypeOfScheduleType">
+		<restriction base="string">
+			<enumeration value="SCHEDULE3"></enumeration>
+			<enumeration value="SCHEDULE4"></enumeration>
+			<enumeration value="SCHEDULE6"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ScheduleType">
+		<restriction base="int">
+			<totalDigits value="2"></totalDigits>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="PartType">
+		<restriction base="int">
+			<totalDigits value="2"></totalDigits>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SectionType">
+		<restriction base="string">
+			<maxLength value="1"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="DutyUnitType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="DutyRateType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="DutyUnitCodeType">
+		<restriction base="string">
+			<maxLength value="2"></maxLength>
+		</restriction>
+	</simpleType>	
+	
+	<simpleType name="TradeAgreementTypeType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FormulaCodeType">
+		<restriction base="string">
+			<maxLength value="4"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="ClassificationRangeType">
+		<restriction base="string">
+			<maxLength value="4"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PerishableLevelType">
+		<restriction base="int">
+			<totalDigits value="5"></totalDigits>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ExpectedYieldType">
+		<restriction base="string">
+			<maxLength value="91"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SenderIdType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DualRegCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SoftwareType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FromIDType">
+		<restriction base="string">
+			<pattern value="\w{0,16}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ToIDType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UrlType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PortType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UsernameType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="VehicleDecType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PasswordType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="UnitNameType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DomainType">
+		<restriction base="string">
+			<pattern value="\w{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="PlaceType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="LocTermCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,11}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShedDepotTermNameType">
+		<restriction base="string">
+			<maxLength value="39"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShedNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RailCargoReportCatType">
+		<restriction base="string">
+			<enumeration value="RAIL_AUTH"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="RoadHaulierReportCatType">
+		<restriction base="string">
+			<enumeration value="ROAD_HAULIER"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="PortNameType">
+		<restriction base="string">
+			<maxLength value="39"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WharfNoType">
+		<restriction base="string">
+			<pattern value="\w{0,11}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BulkTypeType">
+		<restriction base="string">
+			<enumeration value="LQ"></enumeration>
+			<enumeration value="DB"></enumeration>
+			<enumeration value="CC"></enumeration>
+			<enumeration value="CT"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="CarrierCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CarrierRolesType">
+		<restriction base="string">
+			<pattern value="\w{0,39}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CarrierNameType">
+		<restriction base="string">
+			<pattern value="\w{0,79}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AgentCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,8}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="MasterCarrierRegNameType">
+		<restriction base="string">
+			<maxLength value="79"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MasterCarrierRolesType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="UnloccodeType">
+		<restriction base="string">
+			<pattern value="\w{0,39}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CcaNoType">
+		<restriction base="string">
+			<pattern value="\w{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CcaNameType">
+		<restriction base="string">
+			<maxLength value="79"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AirPassRegLicNoType">
+		<restriction base="string">
+			<pattern value="\w{0,26}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustomsOfficeType">
+		<restriction base="string">
+			<pattern value=".{0,50}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BondLodgementsType">
+		<restriction base="string">
+			<enumeration value="NONE"></enumeration>
+			<enumeration value="ROAD"></enumeration>
+			<enumeration value="WAREHOUSE"></enumeration>
+			<enumeration value="REBATE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BondTypeType">
+		<restriction base="string">
+			<enumeration value="B"></enumeration>
+			<enumeration value="C"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FinInstitutionsType">
+		<restriction base="string">
+			<pattern value="\w{0,53}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FinancialAmtType">
+		<restriction base="decimal">
+			<pattern value="\d{0,14}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FinancialAmtDecimalType">
+		<restriction base="decimal">
+			<totalDigits value="17"></totalDigits>
+			<fractionDigits value="2"></fractionDigits>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="IntAmtType">
+		<restriction base="decimal"></restriction>
+	</simpleType>
+
+	<simpleType name="ProofsType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="CcaTypeOther">
+		<restriction base="string">
+			<pattern value="\w{0,53}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+    <simpleType name="QuantityType">
+		<restriction base="string">
+			<pattern value="\d{0,12}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PurposeUseType">
+		<restriction base="string">
+			<maxLength value="91"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ValueType">
+		<restriction base="string">
+			<pattern value="\d{0,13}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PeriodType">
+		<restriction base="string">
+			<pattern value="\d{0,6}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+	<simpleType name="ApplicationIDType">
+		<restriction base="string">
+			<pattern value="[A-Z]{3}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="StatusIDType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ReasonType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="StatusCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DistrictNumberType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DistrictDescriptionType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="WhFileNo">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="WhBusinessTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ZoneType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ZoneOperatorType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RebateFileNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="SrcCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="SetaClassCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChamberCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="InfoSrcType">
+		<restriction base="string">
+			<maxLength value="113"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TaxPeriodType">
+		<restriction base="string">
+			<enumeration value="1"></enumeration>
+			<enumeration value="2"></enumeration>
+			<enumeration value="4"></enumeration>
+			<enumeration value="6"></enumeration>
+			<enumeration value="12"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MajorDivisionSubClassType">
+		<restriction base="string">
+			<pattern value="\d{4}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="DieselRefundTransportModeType">
+		<restriction base="string">
+			<enumeration value="OFFSHORE"></enumeration>
+			<enumeration value="RAIL"></enumeration>
+			<enumeration value="ROAD"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="DpsSeqPeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="BusNatureType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ClientClassType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="BondIdNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="GuarantorCode">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WhTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="WhTypeCode">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RegionType">
+		<restriction base="string">
+			<enumeration value="ALB"></enumeration>
+			<enumeration value="DBN"></enumeration>
+			<enumeration value="CPT"></enumeration>
+			<enumeration value="CEN"></enumeration>
+			<enumeration value="PE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PercentageType">
+		<restriction base="decimal">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="100"></maxInclusive>
+		</restriction>
+	</simpleType>
+	<simpleType name="StandNoType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NoOfYearsType">
+		<restriction base="string">
+			<enumeration value="0"></enumeration>
+			<enumeration value="3"></enumeration>
+			<enumeration value="5"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransportPermitType">
+		<restriction base="string">
+			<maxLength value="15"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DepotNoType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MegawattAmtType">
+		<restriction base="int"></restriction>
+	</simpleType>
+
+
+	<simpleType name="WhPremiseTypeType">
+		<restriction base="string">
+			<maxLength value="100"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CommAreaDescType">
+		<restriction base="string">
+			<maxLength value="60"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CargoReportDescType">
+		<restriction base="string">
+			<maxLength value="100"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StatusCodeDescType">
+		<restriction base="string">
+			<maxLength value="100"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="AddressTypeType">
+		<restriction base="string">
+			<maxLength value="200"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	
+
+
+	<simpleType name="OutstandingType">
+		<restriction base="string">
+			<enumeration value="VAT_MONEY"></enumeration>
+			<enumeration value="VAT_RETURN"></enumeration>
+			<enumeration value="PAYE_MONEY"></enumeration>
+			<enumeration value="PAYE_RETURN"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StateShareType">
+		<restriction base="string">
+			<maxLength value="2"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TitleType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="IDTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="CommunicationType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StatementOfAccountTypeType">
+		<restriction base="string">
+			<enumeration value="PAYE"></enumeration>
+			<enumeration value="VAT"></enumeration>
+			<enumeration value="ITS"></enumeration>
+			<enumeration value="SAP"></enumeration>
+			<enumeration value="CUSTOMS"></enumeration>
+			<enumeration value="EXCISE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CaseNoType">
+		<restriction base="string">
+			<pattern value="\d{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StatementOfAccountPeriodType">
+		<restriction base="string">
+			<maxLength value="6"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DeclarationMRNNoType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MaxTransactionsType">
+		<restriction base="int">
+			<minExclusive value="1"></minExclusive>
+			<maxExclusive value="1000"></maxExclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StatementOfAccountTransactionTypeType">
+		<restriction base="string">
+			<enumeration value="Interim SOA"></enumeration>
+			<enumeration value="Transactional Listing"></enumeration>
+			<enumeration value="Open Items"></enumeration>
+			<enumeration value="Unallocated Payments/Credits"></enumeration>
+			<enumeration value="Allocated Payments/Credits"></enumeration>
+			<enumeration value="Payment Form Number"></enumeration>
+			<enumeration value="Monthly SOA"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StatementOfAccountRequestType">
+		<restriction base="string">
+			<enumeration value="Create"></enumeration>
+			<enumeration value="Cancel"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PaymentMethodType">
+		<restriction base="string">
+			<enumeration value="Cash"></enumeration>
+			<enumeration value="Deferment"></enumeration>
+			<enumeration value="VAT Deferment"></enumeration>
+			<enumeration value="CASH" />
+			<enumeration value="VAT" />
+			<enumeration value="DEFER" />
+			<enumeration value="FREE" />
+			<enumeration value="IMPORTER_DEFER" />
+			<enumeration value="IMPORTER_VAT_DEFER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransactionRefType">
+		<restriction base="string">
+			<maxLength value="22"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransactionDescType">
+		<restriction base="string">
+			<maxLength value="22"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TradersBranchOfficeType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SuccessTypeType">
+		<restriction base="string">
+			<length value="1"></length>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="NatureOfPersonType">
+		<restriction base="string">
+			<enumeration value="A"></enumeration>
+			<enumeration value="B"></enumeration>
+			<enumeration value="C"></enumeration>
+			<enumeration value="D"></enumeration>
+			<enumeration value="E"></enumeration>
+			<enumeration value="F"></enumeration>
+			<enumeration value="G"></enumeration>
+			<enumeration value="H"></enumeration>
+			<enumeration value="K"></enumeration>
+			<enumeration value="N"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+	<simpleType name="ContraventionDetailsType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AgentTINType">
+		<restriction base="string">
+			<pattern value="\w{0,8}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="BondRefNoType">
+		<restriction base="string">
+			<pattern value="\w{0,8}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CeacsPurposeType">
+		<restriction base="string">
+			<enumeration value="C"></enumeration>
+			<enumeration value="R"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="OtherType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="CCACapeBondRefNoType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SAPSecurityNoType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RASBondNoType">
+		<restriction base="string">
+			<maxLength value="2"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SAPSecurityReasonType">
+		<restriction base="string">
+			<enumeration value="ZIEA" />
+			<enumeration value="ZCRE" />
+			<enumeration value="ZER" />
+			<enumeration value="ZCUW" />
+			<enumeration value="ZCOD" />
+			<enumeration value="ZCBB" />
+			<enumeration value="ZSFS" />
+			<enumeration value="ZROB" />
+			<enumeration value="ZCON" />
+			<enumeration value="ZDF" />
+			<enumeration value="ZDGD" />
+			<enumeration value="ZELG" />
+			<enumeration value="ZEM" />
+			<enumeration value="ZDED" />
+			<enumeration value="ZMWC" />
+			<enumeration value="ZEG" />
+			<enumeration value="ZDEV"></enumeration>
+			<enumeration value="ZDEF"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="SecurityCatType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+			<enumeration value="Z1"></enumeration>
+			<enumeration value="Z2"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TaxTypeLevelIndType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ClientTypeLevelIndType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="SecurityTypeType">
+		<restriction base="string">
+			<maxLength value="100"></maxLength>
+			<enumeration value="X"></enumeration>
+			<enumeration value="x"></enumeration>
+			<enumeration value=""></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ApplicationBondTagNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="LimitTypeType">
+		<restriction base="string">
+			<enumeration value="0005"></enumeration>
+			<enumeration value="0006"></enumeration>
+			<enumeration value="PAYE"></enumeration>
+			<enumeration value="DUTIES"></enumeration>
+			<enumeration value="D"></enumeration>
+			<enumeration value="V"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BankValidationResultCodeType">
+		<restriction base="string">
+			<enumeration value="VALID_ACC_NO"></enumeration>
+			<enumeration value="INVALID_PARAMS"></enumeration>
+			<enumeration value="INVALID_ACC_TYPE"></enumeration>
+			<enumeration value="INVALID_BRNCH_CODE"></enumeration>
+			<enumeration value="TOO_LONG_ACC_NO"></enumeration>
+			<enumeration value="INVALID_ACC_NO"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BankValidationResultMsgType">
+		<restriction base="string">
+			<maxLength value="150"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TaxTypeStatusType">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	
+
+
+
+	<simpleType name="CancelReasonType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ApplicationTypeType">
+		<restriction base="string">
+			<enumeration value="REGISTRATION"></enumeration>
+			<enumeration value="LICENSING"></enumeration>
+			<enumeration value="ACCREDITATION"></enumeration>
+			<enumeration value="CANCELLED"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ClientTypeStatusType">
+		<restriction base="string">
+			<enumeration value="NOT_FOUND"></enumeration>
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="CANCELLED"></enumeration>
+			<enumeration value="SUSPENDED"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ClientTypeRefNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="ResponseCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ResponseDescType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ChannelIDType">
+		<annotation>
+			<documentation>
+				Date Last Updated: 2010-12-06. Added new channel ID
+				enumerations: ESB_ALB, ESB_BRO, ESB_DRK, ESB_DBN,
+				ESB_ALB, ESB_BRY, DCTM_BRY, CTV_BRY
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="SMA"></enumeration>
+			<enumeration value="SCN"></enumeration>
+			<enumeration value="CTV"></enumeration>
+			<enumeration value="CTV_ALB"></enumeration>
+			<enumeration value="CTV_BEL"></enumeration>
+			<enumeration value="CTV_DRK"></enumeration>
+			<enumeration value="CTV_DBN"></enumeration>
+			<enumeration value="CTV_BRO"></enumeration>
+			<enumeration value="CTV_BRY"></enumeration>
+			<enumeration value="ITS"></enumeration>
+			<enumeration value="OPV"></enumeration>
+			<enumeration value="EFL"></enumeration>
+			<enumeration value="IFL"></enumeration>
+			<enumeration value="U3TM"></enumeration>
+			<enumeration value="BLK"></enumeration>
+			<enumeration value="LTT"></enumeration>
+			<enumeration value="DCTM"></enumeration>
+			<enumeration value="DCTM_ALB"></enumeration>
+			<enumeration value="DCTM_BEL"></enumeration>
+			<enumeration value="DCTM_DRK"></enumeration>
+			<enumeration value="DCTM_DBN"></enumeration>
+			<enumeration value="DCTM_BRO"></enumeration>
+			<enumeration value="DCTM_BRY"></enumeration>
+			<enumeration value="CRP"></enumeration>
+			<enumeration value="IVR"></enumeration>
+			<enumeration value="SAP"></enumeration>
+			<enumeration value="ESB"></enumeration>
+			<enumeration value="ESB_ALB"></enumeration>
+			<enumeration value="ESB_BRO"></enumeration>
+			<enumeration value="ESB_DRK"></enumeration>
+			<enumeration value="ESB_DBN"></enumeration>
+			<enumeration value="ESB_ALB"></enumeration>
+			<enumeration value="ESB_BRY"></enumeration>
+			<enumeration value="EDI"></enumeration>
+			<enumeration value="XML"></enumeration>
+			<enumeration value="TTS"></enumeration>
+			<enumeration value="SC"></enumeration>
+			<enumeration value="WF"></enumeration>
+			<enumeration value="SM"></enumeration>
+			<enumeration value="MA"></enumeration>
+			<enumeration value="EF"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChannelRefNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="RegSubmissionType">
+		<restriction base="string">
+			<enumeration value="NEW_REGISTRATION"></enumeration>
+			<enumeration value="AMENDMENT"></enumeration>
+			<enumeration value="CANCELLATION"></enumeration>
+			<enumeration value="VALIDATION"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="SegmentationCodeType">
+		<restriction base="string">
+			<enumeration value=""></enumeration>
+			<enumeration value="AEO"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SAPContractAccNoType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BusinessPartnerNoType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SAPReversalReasonType">
+		<restriction base="string">
+			<enumeration value="Z001"></enumeration>
+			<enumeration value="Z002"></enumeration>
+			<enumeration value="Z003"></enumeration>
+			<enumeration value="Z004"></enumeration>
+			<enumeration value="Z005"></enumeration>
+			<enumeration value="Z006"></enumeration>
+			<enumeration value="Z007"></enumeration>
+			<enumeration value="Z008"></enumeration>
+			<enumeration value="Z009"></enumeration>
+			<enumeration value="Z010"></enumeration>
+			<enumeration value="Z011"></enumeration>
+			<enumeration value="Z012"></enumeration>
+			<enumeration value="Y001"></enumeration>
+			<enumeration value="Y002"></enumeration>
+			<enumeration value="Y003"></enumeration>
+			<enumeration value="Y004"></enumeration>
+			<enumeration value="Y005"></enumeration>
+			<enumeration value="Y006"></enumeration>
+			<enumeration value="Y007"></enumeration>
+			<enumeration value="Y008"></enumeration>
+			<enumeration value="Y009"></enumeration>
+			<enumeration value="Y010"></enumeration>
+			<enumeration value="Y011"></enumeration>
+			<enumeration value="Y012"></enumeration>
+		</restriction>
+	</simpleType>
+<annotation>
+<documentation> SAPReversalReasonType was extended from Z001-Z008 to Z001-Z012 and Y001-Y012 to accommodate the new service
+</documentation>
+</annotation>
+
+	<simpleType name="AmtItemsType">
+		<restriction base="int">
+			<minInclusive value="1"></minInclusive>
+			<maxInclusive value="20"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ContactPrefRankingType">
+		<restriction base="string">
+			<enumeration value="1"></enumeration>
+			<enumeration value="2"></enumeration>
+			<enumeration value="3"></enumeration>
+			<enumeration value="4"></enumeration>
+			<enumeration value="5"></enumeration>
+			<enumeration value=""></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="IncSrcCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CertNoType">
+		<restriction base="string">
+			<pattern value="\w{0,30}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+	<simpleType name="WithheldReasonCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DirectiveNosType">
+		<restriction base="string">
+			<pattern value="\w{0,15}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="BusTradeIdentifierType">
+		<restriction base="string">
+			<pattern value="\d{0,12}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<simpleType name="VehicleRegNoType">
+		<restriction base="string">
+			<pattern value="\w{0,12}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VehicleMakeType">
+		<restriction base="string">
+			<pattern value="\w{0,18}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VehicleModelType">
+		<restriction base="string">
+			<pattern value="\w{0,18}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+	<simpleType name="LsExcessRafdedType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="S89QuatTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="S89QuatCalCamtType">
+		<restriction base="string"></restriction>
+	</simpleType>
+	<simpleType name="RoleTypeType">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="AuthenticationType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="DeclarationOfficeIDType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeclarationTypeCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeclarationIDType" >
+		<restriction base="string">
+			<pattern value=".{0,35}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="VersionType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="FunctionCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CurrencyType">
+		<restriction base="string">
+			<pattern value="\w{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="UnitCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,2}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="DutyRegimeCodeType">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="DutyTaxFeeCodeType">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="PaymentReferenceType">
+		<restriction base="string">
+			<pattern value="\w{0,35}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeliverToPartyType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="OfficeIDType">
+		<restriction base="string">
+			<pattern value=".{0,17}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransportMeansTypeType">
+		<restriction base="string">
+			<enumeration value="BORDER" />
+			<enumeration value="ARRIVAL" />
+			<enumeration value="DEPARTURE" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportMeansIdentificationType">
+		<restriction base="string">
+			<pattern value="\w{0,10}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportMeansCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,2}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="JourneyIDType">
+		<restriction base="string">
+			<pattern value="\w{0,17}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FullnessCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TransportEquipmentIDType">
+		<restriction base="string">
+			<pattern value="\w{0,17}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="SealIDType">
+		<restriction base="string" />
+	</simpleType>
+
+	<simpleType name="ValuationChargeCodeType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="ValuationMethodCodeType">
+		<restriction base="string">
+			<maxLength value="1" />
+		</restriction>
+	</simpleType>
+	<simpleType name="PartyRelationshipIndicatorType">
+		<restriction base="string">
+			<pattern value="\w{0,1}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TermsOfPaymentCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LocationTypeType">
+		<restriction base="string">
+			<enumeration value="EXAMINATION_PLACE" />
+			<enumeration value="GOODS_LOCATION" />
+		</restriction>
+	</simpleType>
+	<simpleType name="LocationIDType">
+		<restriction base="string">
+			<pattern value="\w{0,2}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="LocationNameType">
+		<restriction base="string" />
+	</simpleType>
+
+	<simpleType name="SequenceNumericType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="PartnerSequenceNumericType">
+		<restriction base="string">
+			<pattern value="\w{0,5}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="MeasureUnitType">
+		<restriction base="string">
+			<pattern value="\w{0,3}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="CommodityDescriptionType">
+		<restriction base="string">
+			<pattern value="\w{0,512}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="ClassificationResultType">
+		<restriction base="string">
+			<pattern value=".{0,9}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="ClassificationTypeType">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="ProcedureCodeType">
+		<restriction base="string">
+			<pattern value="\d{0,2}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="MarksNumbersType">
+		<restriction base="string">
+			<pattern value="\w{0,350}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="PackagingMaterialDescriptionType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="SizeDescriptionType">
+		<restriction base="string">
+			<pattern value="\w{0,2}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="PackagingTypeType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="GuaranteeReferenceType">
+		<restriction base="string">
+			<pattern value="\d{0,9}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="SecurityDetailsCodeType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="DocumentIssuePlaceType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="DocumentIssuingPlaceCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,5}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="DocumentValueType">
+		<restriction base="string">
+			<pattern value="\d{0,18}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DocumentAuthenticationPlaceType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="DocumentIDType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="LineNumberType">
+		<restriction base="string">
+			<pattern value="\d{0,4}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="DocumentTypeCodeType">
+		<restriction base="string">
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatementCodeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatementDescriptionType">
+		<restriction base="string">
+			<pattern value="\w{0,11}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="CommentType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="CountrySubDivisionIDType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="CountrySubDivisionNameType">
+		<restriction base="string" />
+	</simpleType>
+	<simpleType name="RegionIDType">
+		<restriction base="string" />
+	</simpleType>
+
+
+
+
+
+	<simpleType name="SubmissionIndType">
+		<restriction base="string">
+			<enumeration value="TEST"></enumeration>
+			<enumeration value="LIVE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FilenameType">
+		<restriction base="string">
+			<maxLength value="120"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="CertTypeType">
+		<restriction base="string">
+			<enumeration value="IRP5"></enumeration>
+			<enumeration value="IT3_A"></enumeration>
+			<enumeration value="ITREG"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TaxRefVerifyFeedbackType">
+		<restriction base="string">
+			<enumeration value="REGISTERED"></enumeration>
+			<enumeration value="VERIFIED"></enumeration>
+			<enumeration value="NOT_VERIFIED_AND_REGISTERED"></enumeration>
+			<enumeration value="DUPLICATE"></enumeration>
+			<enumeration value="REGISTRATION_FAILED"></enumeration>
+			<enumeration value="NOT_VERIFIED"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="ChangedIndType">
+		<restriction base="string">
+			<enumeration value="NEW"></enumeration>
+			<enumeration value="UPDATED"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+			<enumeration value="NO_CHANGE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BankRefNoType">
+		<restriction base="string">
+			<pattern value="\w{0,20}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="DocumentTypeType">
+		<restriction base="string">
+			<enumeration value="TRANSPORT_DOC"></enumeration>
+			<enumeration value="HOUSE_WAYBILL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PaymentMethodCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AmtTypeType">
+		<restriction base="string">
+			<pattern value="\w{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DescriptionType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AuditCaseActionType">
+		<restriction base="string">
+			<maxLength value="1"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AuditCaseClassNoType">
+		<restriction base="string">
+			<enumeration value="O"></enumeration>
+			<enumeration value="E"></enumeration>
+			<enumeration value="A" />
+			<enumeration value="I" />
+			<enumeration value="C" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FollowUpNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AuditCaseReturnMsgType">
+		<restriction base="string">
+			<pattern value="\d{0,2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AssessmentSeqNoType">
+		<restriction base="string">
+			<minLength value="0"></minLength>
+			<maxLength value="3"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="RiskReferralReasonCodeType">
+		<restriction base="unsignedShort"></restriction>
+	</simpleType>
+
+	<simpleType name="RiskReferralReasonDescType">
+		<restriction base="string">
+			<maxLength value="250"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VersionNoType">
+		<restriction base="string">
+			<pattern value="\d{0,5}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NoticeNoType">
+		<restriction base="string">
+			<minLength value="1"></minLength>
+			<maxLength value="15"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TypeOfAssessmentType">
+		<restriction base="string">
+			<minLength value="0"></minLength>
+			<maxLength value="2"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+
+
+	<simpleType name="ContentCategoryType">
+		<restriction base="string">
+			<maxLength value="70"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContentTypeType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ProductType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="SpecialUsersGroupType">
+		<restriction base="string">
+			<enumeration value="NONE"></enumeration>
+			<enumeration value="VIP"></enumeration>
+			<enumeration value="LBC"></enumeration>
+			<enumeration value="PARLIMENTARIAN"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RequestorIdentifierType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ContentLocationType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SubjectAreaType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="BinaryDataType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ObjectTypeType">
+		<restriction base="string">
+			<enumeration value="sars_tax_doc"></enumeration>
+			<enumeration value="sars_customs_doc"></enumeration>
+			<enumeration value="sars_reg_doc"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ObjectNameType">
+		<restriction base="string">
+			<maxLength value="255"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PathType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DocumentFormatType">
+		<restriction base="string">
+			<enumeration value="pdf"></enumeration>
+			<enumeration value="xml"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransferModeType">
+		<restriction base="string">
+			<enumeration value="BASE64"></enumeration>
+			<enumeration value="MTOM"></enumeration>
+			<enumeration value="UCF"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AclNameType">
+		<restriction base="string">
+			<enumeration value="sars_acl_customs"></enumeration>
+			<enumeration value="sars_acl_reg"></enumeration>
+			<enumeration value="sars_acl"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BatchIDType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DataExtractMethodType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ActualPageListType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ProcessStatusType">
+		<restriction base="string">
+			<maxLength value="18"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PageCountType">
+		<restriction base="int"></restriction>
+	</simpleType>
+
+	<simpleType name="DocumentLocationType">
+		<restriction base="string">
+			<maxLength value="40"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProcedureCategoryCodeType">
+		<restriction base="string">
+			<pattern value="[A-Z]{1}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BoxNumberType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="IdentifierValue">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="InformationClassType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="InformationSubClassType">
+		<restriction base="string">
+			<maxLength value="101"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="CallDurationType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RetainType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="CallReferenceNumberType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="MonthType">
+		<restriction base="string">
+			<pattern value="\d{2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProgramType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DialogType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="TaxpayerCategoryCodeType">
+        <annotation>
+        	<documentation>Represents the taxpayer's categor</documentation>
+        </annotation>
+        <restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="TaxpayerTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="TaxpayerClassificationCode">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ITSRegistrationID">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="MasterIDType">
+		<restriction base="long"></restriction>
+	</simpleType>
+
+	<simpleType name="OccupationType">
+		<restriction base="string"></restriction>
+	</simpleType>
+	
+
+	<simpleType name="OtherIDNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="SalaryNoType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TelFaxTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DialCodeType">
+		<restriction base="string">
+			<maxLength value="5"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ExtensionType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="PAYEPurposeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="PAYERegNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="MajorDivisionCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="DeductionTableCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="PurposeRegCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ExemptionCodeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="SettlementNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RCSRefNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="ClientNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="RegistrationOriginTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="CounterType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="LabourBrokerRefNoType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="RecordTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+ <simpleType name="UniqueIdentifierType">
+		<restriction base="string">
+			<pattern value="[A-F|a-f|0-9|-]{0,64}"></pattern>
+		</restriction>
+	</simpleType>
+	<simpleType name="ExternalReferenceIDType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="ExternalReferenceIDTypeType">
+		<restriction base="string">
+			<enumeration value="TAX_NO"/>
+			<enumeration value="ID_NO"/>
+			<enumeration value="PASSPORT_NO"/>
+			<enumeration value="COMPANY_REGISTRATION_NO"/>
+			<enumeration value="PARTY_ID"/>
+			<enumeration value="TIN_NO"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TransactionTypeType">
+		<restriction base="string">
+			<enumeration value="ITR12"/>
+			<enumeration value="IRP6"/>
+			<enumeration value="IT34"/>
+			<enumeration value="Risk"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ErrorCodeType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="ErrorStateType">
+		<restriction base="string">
+		<maxLength value="256"></maxLength>
+	</restriction>
+	</simpleType>
+	<simpleType name="ErrorTypeType">
+		<restriction base="string">
+			<enumeration value="BUSINESS"></enumeration>
+			<enumeration value="TECHNICAL"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ErrorCategoryType">
+		<restriction base="string">
+			<enumeration value="BUSINESS_VALIDATION"></enumeration>
+			<enumeration value="DATA"></enumeration>
+			<enumeration value="COMPUTATION"></enumeration>
+			<enumeration value="NAVIGATION"></enumeration>
+			<enumeration value="TIMING"></enumeration>
+			<enumeration value="SYSTEM_FAILURE"></enumeration>
+			<enumeration value="DATABASE"></enumeration>
+			<enumeration value="MESSAGE_STRUCTURE"></enumeration>
+			<enumeration value="MESSAGE_ROUTING"></enumeration>
+			<enumeration value="PERFORMANCE"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ErrorSeverityType">
+		<restriction base="string">
+			<enumeration value="CRITICAL"></enumeration>
+			<enumeration value="HIGH"></enumeration>
+			<enumeration value="MEDIUM"></enumeration>
+			<enumeration value="LOW"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="ErrorResolutionTypeType">
+		<restriction base="string">
+			<enumeration value="ALERT"></enumeration>
+			<enumeration value="TECHNICAL_INCIDENT"></enumeration>
+			<enumeration value="BUSINESS_INCIDENT"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="NotificationTypeType">
+		<restriction base="string">
+			<enumeration value="SMS"></enumeration>
+			<enumeration value="EMAIL"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="MessageSubjectType">
+		<restriction base="string">
+			<maxLength value="154"></maxLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="TransactionStatusType">
+		<restriction base="string">
+			<enumeration value="TX_INITIATED"/>
+			<enumeration value="BATCH_ACCEPT"/>
+			<enumeration value="BATCH_APPLICATION_ERROR_SENT"/>
+			<enumeration value="BATCH_PARSING_ERROR_SENT"/>
+			<enumeration value="BATCH_APPLICATION_ERROR_NOT_SENT"/>
+			<enumeration value="BATCH_PARSING_ERROR_NOT_SENT"/>
+			<enumeration value="TX_ACCEPT"/>
+			<enumeration value="TX_APPLICATION_ERROR_SENT"/>
+			<enumeration value="TX_PARSING_ERROR_SENT"/>
+			<enumeration value="TX_APPLICATION_ERROR_NOT_SENT"/>
+			<enumeration value="TX_PARSING_ERROR_NOT_SENT"/>
+			<enumeration value="TX_PENDING"/>
+			<enumeration value="TX_ERROR"/>
+			<enumeration value="BATCH_SENT"/>
+			<enumeration value="BATCH_ACCEPT_SENT"/>
+			<enumeration value="BATCH_APPLICATION_ERROR_RECEIVED"/>
+			<enumeration value="BATCH_PARSING_ERROR_RECEIVED"/>
+			<enumeration value="TX_SENT"/>
+			<enumeration value="TX_ACCEPT_SENT"/>
+			<enumeration value="TX_APPLICATION_ERROR_RECEIVED"/>
+			<enumeration value="TX_PARSING_ERROR_RECEIVED"/>
+			<enumeration value="TX_BATCH_APPLICATION_ERROR_RECEIVED"/>
+			<enumeration value="TX_BATCH_PARSING_ERROR_RECEIVED"/>
+			<enumeration value="TX_ACCEPT_RECEIVED"/>
+			<enumeration value="TX_CLOSED"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SystemStatusType">
+		<restriction base="string">
+			<maxLength value="256"></maxLength>
+		</restriction>
+	</simpleType>
+   
+	
+	
+	
+	<simpleType name="InterfaceIDType">
+		<restriction base="string">
+			<pattern value="\d{0,10}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SimpleEntityType">
+		<restriction base="string">
+			<enumeration value="INDIVIDUAL"></enumeration>
+			<enumeration value="ORGANISATION"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="VDPApplicationNoType">
+		<restriction base="string">
+			<pattern value="\w{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContactPrefType">
+		<restriction base="string">
+			<enumeration value="EMAIL"></enumeration>
+			<enumeration value="SMS"></enumeration>
+			<enumeration value="POST"></enumeration>
+			<enumeration value="FAX"></enumeration>
+			<enumeration value="TAX_PRACTIONER"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="SignatureType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+
+
+	<simpleType name="TypeOfDefaultType">
+		<restriction base="string">
+			<enumeration value="TAX_UNDERSTATEMENT"></enumeration>
+			<enumeration value="EXPENSES_OVERCLAIM"></enumeration>
+			<enumeration value="NONCOMPLIANCE_OUTSTANDING_TAX"></enumeration>
+			<enumeration value="LIABILITY_UNDERSTATEMENT"></enumeration>
+			<enumeration
+				value="NONCOMPLIANCE_UNDERDECLARED_LIABILITY"
+			>
+			</enumeration>
+			<enumeration value="OUTPUT_UNDERSTATEMENT"></enumeration>
+			<enumeration value="INPUT_OVERSTATEMENT"></enumeration>
+			<enumeration value="TARIFF_HEADING"></enumeration>
+			<enumeration value="COUNTRY_OF_ORIGIN"></enumeration>
+			<enumeration value="VALUATION"></enumeration>
+			<enumeration value="OTHER"></enumeration>
+			<enumeration value="NON_DECLARATION"></enumeration>
+			<enumeration value="UNDER_DECLARATION"></enumeration>
+			<enumeration value="NONCOMPLIANCE_OUTSTANDING_DUTY_LEVY"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="BillOfEntryNoType">
+		<restriction base="string">
+			<pattern value="\w{0,7}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustomsOfficeCodeType">
+		<restriction base="string">
+			<pattern value="[A-Z]{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+
+
+
+
+	<simpleType name="OtherTypeOfTaxType">
+		<restriction base="string">
+			<enumeration value="ROYALTIES"></enumeration>
+			<enumeration value="DONATIONS_TAX"></enumeration>
+			<enumeration value="ESTATE_DUTY"></enumeration>
+			<enumeration value="INDEMNITY_STAMPS"></enumeration>
+			<enumeration value="LICENSE_PAYMENTS"></enumeration>
+			<enumeration value="CERTIFICATE_OF_REVENUE"></enumeration>
+			<enumeration value="COMPANY_FEES"></enumeration>
+			<enumeration value="MINING_RENT"></enumeration>
+			<enumeration value="RECOVERY_WORKS_LICENSE"></enumeration>
+			<enumeration value="UST"></enumeration>
+			<enumeration value="JEWELLERS_PERMIT"></enumeration>
+			<enumeration value="MINERAL_PETROLEUM_AND_ROYALTIES"></enumeration>
+			<enumeration value="MINING_LEASES"></enumeration>
+			<enumeration value="REVENUE_STAMPS"></enumeration>
+			<enumeration value="ROYALTIES_DTA"></enumeration>
+			<enumeration value="SECONDARY_TAX_ON_COMPANIES"></enumeration>
+			<enumeration value="STAMP_DUTY"></enumeration>
+			<enumeration value="STT"></enumeration>
+			<enumeration value="TRANSFER_DUTY"></enumeration>
+			<enumeration value="TURNOVER_TAX"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="HashType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+    <simpleType name="OwnershipCapacityType">
+    	<restriction base="string">
+    		<enumeration value="PARTNER"></enumeration>
+    		<enumeration value="SHAREHOLDER"></enumeration>
+    		<enumeration value="MEMBER"></enumeration>
+    		<enumeration value="BENEFICIARY"></enumeration>
+    		<enumeration value="MAIN_PARTNER"></enumeration>
+    		<enumeration value="DIRECTOR"></enumeration>
+    		<enumeration value="TRUSTEE"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+
+
+
+    <simpleType name="LimitAmendedTypeType">
+    	<restriction base="string">
+    		<enumeration value="INCREASE"></enumeration>
+    		<enumeration value="DECREASE"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+
+    <simpleType name="PaymentDateType">
+    	<restriction base="string">
+    		<pattern value="\d{1,2}"></pattern>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="RefundTransactionType">
+    	<restriction base="string">
+    		<enumeration value="REFUND"></enumeration>
+    		<enumeration value="CANCEL"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="FinancialDocRefNoType">
+    	<restriction base="string">
+    		<maxLength value="12"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="YesNoBlankIndType">
+    	<restriction base="string">
+    		<enumeration value="Y"></enumeration>
+    		<enumeration value="N"></enumeration>
+    		<enumeration value=""></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="SAPContractAccCatType">
+    	<restriction base="string">
+    		<minLength value="0"></minLength>
+    		<maxLength value="2"></maxLength>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="SecurityStatusType">
+    	<restriction base="string">
+    		<enumeration value="11"></enumeration>
+    		<enumeration value="99"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="DefermentIndicatorType">
+    	<restriction base="string">
+    		<enumeration value="D"></enumeration>
+    		<enumeration value="V"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="PRNType">
+    	<restriction base="string">
+    		<pattern value="\w{0,19}"></pattern>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="PaymentAllocationStatusType">
+    	<restriction base="string">
+    		<enumeration value="ALLOCATED"></enumeration>
+    		<enumeration value="PARTIALLY_ALLOCATED"></enumeration>
+    		<enumeration value="UNALLOCATED"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+
+    
+
+
+
+
+    <simpleType name="TradingAccountTypeType">
+    	<restriction base="string">
+    		<enumeration value="DEFERMENT"></enumeration>
+    		<enumeration value="CASH"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="LimitSourceType">
+    	<restriction base="string">
+    		<enumeration value="DEFERMENT"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="FinancialTradingAccountTypeType">
+    	<restriction base="string">
+    		<enumeration value="DEFERMENT"></enumeration>
+    		<enumeration value="CASH"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="ReceiptNoType">
+    	<restriction base="string">
+    		<maxLength value="10"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="ReturnTypeType">
+    	<restriction base="string">
+    		<enumeration value="ITR12"></enumeration>
+    		<enumeration value="EMP201"></enumeration>
+    		<enumeration value="IRP5"></enumeration>   		
+    		<enumeration value="IRP6"></enumeration>
+    		<enumeration value="IT14"></enumeration>
+    		<enumeration value="IT12EI"></enumeration>
+    		<enumeration value="IT12TR"></enumeration>
+    		<enumeration value="EMP501"></enumeration>
+    		<enumeration value="VAT201"></enumeration>
+    		<enumeration value="CD1"></enumeration>
+    		<enumeration value="STC"></enumeration>
+    		<enumeration value="EMP601"></enumeration>
+    		<enumeration value="EMP701"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="ReturnStatusType">
+    	<restriction base="string">
+    		<enumeration value="ASSESSMENT_FINALISED"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="ActivationStatusType">
+    	<restriction base="string">
+    		<enumeration value="ACTIVATED"></enumeration>
+    		<enumeration value="DEACTIVATED"></enumeration>
+    	</restriction>
+    </simpleType>
+
+ 
+    <simpleType name="PlaceOfEntryType">
+    	<restriction base="string">
+    		<maxLength value="35"></maxLength>
+    	</restriction>
+    </simpleType>
+    
+    <simpleType name="OfficeNumberType">
+    	<restriction base="string">
+    		<maxLength value="35"></maxLength>
+    	</restriction>
+    </simpleType>
+
+
+
+
+
+    <simpleType name="PaymentDisposalType">
+    	<restriction base="string">
+    		<enumeration value="SA"></enumeration>
+    		<enumeration value="AM"></enumeration>
+    		<enumeration value="NA"></enumeration>
+    		<enumeration value="RD"></enumeration>
+    		<enumeration value="IJ"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="TypeOfPenaltyType">
+    <restriction base = "string">
+    <enumeration value="LATE_PAYMENT"></enumeration>
+    <enumeration value = "NON_PAYMENT" ></enumeration>
+    </restriction>
+    </simpleType>
+    
+    
+	
+	<simpleType name="CO2RefNoType">
+	<annotation>
+        	<documentation>Added since version 43</documentation>
+        </annotation>
+		<restriction base="string">
+			<pattern value="\w{0,21}"></pattern>
+		</restriction>
+	</simpleType>
+	
+
+
+
+    <simpleType name="CustomsReferenceIDType">
+    	<restriction base="string">
+    		<pattern value=".{0,35}"></pattern>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="StateCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    
+    <simpleType name="CustomsStatusCodeType">
+    	<restriction base="string">
+    		<maxLength value="3"></maxLength>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="TypeCodeType">
+    	<restriction base="string">
+    		<pattern value=".{0,4}"></pattern>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="TransactionNatureCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+
+    <simpleType name="CustomsItemType">
+    	<restriction base="string">
+    		<pattern value="\d{0,4}"></pattern>
+    	</restriction>
+    </simpleType>
+
+
+
+
+
+
+    <simpleType name="LanguageCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+
+    <simpleType name="AdditionalCodeTypeType">
+    	<restriction base="string">
+    		<pattern value=".{0,32}"></pattern>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="MethodTypeType">
+    	<restriction base="string">
+    		<maxLength value="1"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="CategoryCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <simpleType name="CharacteristicCodeType">
+    	<restriction base="string">
+    		<maxLength value="32"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="QualifierCodeType">
+    	<restriction base="string">
+    		<maxLength value="3"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="NameCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <simpleType name="CommodityIDType">
+    	<restriction base="string">
+    		<pattern value=".{0,32}"></pattern>
+    	</restriction>
+    </simpleType>
+
+
+
+
+    <simpleType name="CustomsIndicatorType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <simpleType name="PriorityType">
+    	<restriction base="int">
+    		<minInclusive value="0"></minInclusive>
+    		<maxInclusive value="99"></maxInclusive>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="PaymentTermsCodeType">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <simpleType name="CommunicationIDType">
+    	<restriction base="string">
+    		<pattern value=".{0,8}"></pattern>
+    	</restriction>
+    </simpleType>
+    <annotation>
+    <documentation> AdminTypeType added on 4 January 2011 that represents the Administrative actions
+    </documentation>
+    </annotation>
+    <simpleType name="AdminTypeType">
+    <restriction base = "string">
+    <enumeration value ="AdminPenaltyRequest"></enumeration>
+    <enumeration value ="AdminPenaltyReversal"></enumeration>
+    <enumeration value="AdminPenaltyReverseAll"></enumeration>
+    <enumeration value = "AdminPenaltyReverseFrom"></enumeration>
+    </restriction>
+     </simpleType>
+     <annotation>
+    <documentation> PromiseToPayTaxType added on 5 January 2011 that represents the Tax types within PromiseToPay service attributes
+    </documentation>
+    </annotation>
+    <simpleType name="PromiseToPayTaxType">
+    <restriction base="string">
+     <enumeration value="Assessed_Tax"></enumeration>
+     <enumeration value="Provisional_Tax"></enumeration>
+     <enumeration value="Admin_Penalty"></enumeration>
+     <enumeration value="STC"></enumeration>
+     </restriction>
+     </simpleType>
+      <annotation>
+    <documentation>StopOrderType added on 4 January 2011 that represents the PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="StopOrderType">
+    <restriction base="string">
+     <enumeration value="Salary"></enumeration>
+     <enumeration value="Agent"></enumeration>
+     <enumeration value="Bank"></enumeration>
+     </restriction>
+     </simpleType>
+          <annotation>
+    <documentation> PromiseToPayIntervalFreqCodeType added on 4 January 2011 that represents the interval frequency codes within PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="PromiseToPayIntervalFreqCodeType">
+    <restriction base="string">
+     <enumeration value="Monthly"></enumeration>
+     <enumeration value="BiMonthly"></enumeration>
+     <enumeration value="Quarterly"></enumeration>
+     </restriction>
+     </simpleType>
+     <annotation>
+    <documentation> PromiseToPayActionType added on 4 January 2011 that represents the PromiseToPay service
+    </documentation>
+    </annotation>
+     <annotation>
+    <documentation> DefermentReasonType added on 5 January 2011 that represents the DefermentReasonTypes within PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="DefermentReasonType">
+    <restriction base="string">
+     <enumeration value="Normal"></enumeration>
+     <enumeration value="PostDatedCheque"></enumeration>
+     <enumeration value="ObjectionAppeal"></enumeration>
+     <enumeration value="Further Extension"></enumeration>
+     <enumeration value="Revised"></enumeration>
+     <enumeration value="Administration Order"></enumeration>
+     </restriction>
+     </simpleType>
+     <annotation>
+    <documentation> IssuedStatusType added on 5 January 2011 that represents the IssuedStatusTypes within PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="IssuedStatusType">
+    <restriction base="string">
+     <enumeration value="Issued"></enumeration>
+     <enumeration value="Cancelled"></enumeration>
+     <enumeration value="NotAdheredTo"></enumeration>
+     <enumeration value="Finalised"></enumeration>
+     </restriction>
+     </simpleType>
+          <annotation>
+    <documentation> StopOrderSubTypeType added on 5 January 2011 that represents the StopOrderSubType elements within PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="StopOrderSubTypeType">
+    <restriction base="string">
+     <enumeration value="Voluntary"></enumeration>
+     <enumeration value="NonVoluntary"></enumeration>
+     </restriction>
+     </simpleType>
+      <annotation>
+     <documentation> PromiseToPayUser added on 5 January 2011 to accommodate the ITS UserDetails
+     </documentation>
+     </annotation>
+    <annotation>
+    <documentation> PromiseToPayStructure added on 4 January 2011 that represents the PromiseToPay service
+    </documentation>
+    </annotation>
+    <annotation>
+    <documentation> PromiseToPayTaxStructure added on 4 January 2011 that represents the PromiseToPayTax
+    </documentation>
+    </annotation>
+     <annotation>
+    <documentation> PromiseToPayStopOrderTypeStructure added on 4 January 2011 that represents the PromiseToPayTax Stop Order types
+    </documentation>
+    </annotation>
+     <annotation>
+     <documentation>AdminStatementOfAccountStructure added on 4January 2011 to accommodate the ITS administrative transaction type
+     </documentation>
+     </annotation>
+     <annotation>
+    <documentation> IssueStructure added on 4 January 2011 that represents the PromiseToPay Balance structure 
+    </documentation>
+    </annotation>
+     <annotation>
+    <documentation> AdminBalanceStructure added on 4 January 2011 that represents the PromiseToPay Balance structure 
+    </documentation>
+    </annotation>
+     <annotation>
+    <documentation> WorkItemStatusType added on 5 January 2011 that represents the WorkItemStatusTypes within PromiseToPay service
+    </documentation>
+    </annotation>
+    <simpleType name="WorkItemStatusType">
+    <restriction base="string">
+    <enumeration value="New/NotReleased"></enumeration>
+    <enumeration value="New"></enumeration>
+    <enumeration value="In Process"></enumeration>
+    <enumeration value="For Resubmission"></enumeration>
+    <enumeration value="Closed"></enumeration>
+  <enumeration value="Closed By Dunning Activity Run"></enumeration>
+  <enumeration value="Closed After Incoming Payment"></enumeration>
+  <enumeration value="Closed Manually"></enumeration>
+  <enumeration value ="Closed by Reversal of Dunning Activity Run"></enumeration>
+    </restriction>
+    </simpleType>
+     <annotation>
+    <documentation> AdminContractStructure added on 4 January 2011 that represents the PromiseToPay service
+    </documentation>
+    </annotation>
+    
+    
+	  <complexType name="PeriodStructure">
+    	<sequence>
+    		<element name="FromPeriod" type="bt:PeriodType"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="ToPeriod" type="bt:PeriodType"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="Metadata"
+    			type="bt:MetadataStructure" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    		<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute>
+    </complexType>
+    
+    
+    <complexType name="TaxPeriodStructure">
+        <annotation>
+        	<documentation>Structure representing a tax period</documentation>
+        </annotation>
+        <sequence>
+			<element name="PeriodType" type="bt:TaxPeriodType"
+				maxOccurs="1" minOccurs="0">
+                <annotation>
+                	<documentation>Represents the type of period interval</documentation>
+                </annotation>
+			</element>
+			<element name="FYE" type="bt:FYEType" maxOccurs="1"
+				minOccurs="0">
+                <annotation>
+                	<documentation>Represents the financial year end associated with the tax period</documentation>
+                </annotation>
+			</element>
+            <element name="Metadata" type="bt:MetadataStructure" maxOccurs="1" minOccurs="0">
+                <annotation>
+                	<documentation>Represents the application specific processing metadata associated with the tax period</documentation>
+                </annotation>
+            </element>
+        </sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    <complexType name="TaxRefStructure">
+        <annotation>
+        	<documentation>Structure representing the reference details for a registered SARS tax product</documentation>
+        </annotation>
+        <sequence>
+			<element name="TypeOfTax" type="bt:TypeOfTaxType"
+				minOccurs="1" maxOccurs="1">
+                <annotation>
+                	<documentation>Represents the type of tax product</documentation>
+                </annotation>
+			</element>
+			<element name="TaxRefNo" type="bt:TaxRefNoType"
+				minOccurs="1" maxOccurs="1">
+                <annotation>
+                	<documentation>Represents the reference number associated with the type of tax product</documentation>
+                </annotation>
+			</element>
+			<element name="Metadata" type="bt:MetadataStructure"
+				minOccurs="0">
+                <annotation>
+                	<documentation>Represents the application specific processing metadata associated with the reference details for a registered SARS tax product</documentation>
+                </annotation>
+			</element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    
+       <complexType name="QuantityStructure">
+    	<sequence>
+            <element name="Quantity" type="bt:QuantityType"
+            	maxOccurs="1" minOccurs="0">
+            </element>
+            <element name="Unit" type="bt:MeasureUnitType" maxOccurs="1"
+            	minOccurs="0">
+            </element>
+
+    	</sequence>
+    </complexType>
+    
+    <complexType name="MetadataStructure">
+        <annotation>
+        	<documentation>Structure representing application specific metadata</documentation>
+        </annotation>
+        <sequence>
+            <element
+            	name="MasterID"
+            	type="bt:MasterIDType"
+            	maxOccurs="1"
+            	minOccurs="0"
+            >
+                <annotation>
+                	<documentation>Represents the ID associated with source application from which the details originated</documentation>
+                </annotation>
+            </element>
+            <element
+				name="ApplicationMetadata"
+				type="bt:ApplicationMetadataStructure"
+				minOccurs="0"
+				maxOccurs="unbounded"
+			>
+                <annotation>
+                	<documentation>Represents the application specific metadata</documentation>
+                </annotation>
+            </element>
+			<element
+				name="ChangedInd"
+				type="bt:ChangedIndType"
+				maxOccurs="1"
+				minOccurs="0"
+			>
+                <annotation>
+                	<documentation>Indicates whether the associated data was changed</documentation>
+                </annotation>
+			</element>
+			<element
+				name="Username"
+				type="bt:UsernameType"
+				maxOccurs="1"
+				minOccurs="0"
+			>
+                <annotation>
+                	<documentation>Represents the username of the SARS employee/application that changed the data</documentation>
+                </annotation>
+			</element>
+			<element
+				name="TimeStamp"
+				type="dateTime"
+				maxOccurs="1"
+				minOccurs="0"
+			>
+                <annotation>
+                	<documentation>Represents the date and time when the data was last updated</documentation>
+                </annotation>
+			</element>
+			<element
+				name="Program"
+				type="bt:ProgramType"
+				maxOccurs="1"
+				minOccurs="0"
+			>
+                <annotation>
+                	<documentation>Represents the details of the computer program that changed the data</documentation>
+                </annotation>
+			</element>
+			<element
+				name="Dialog"
+				type="bt:DialogType"
+				maxOccurs="1"
+				minOccurs="0"
+			>
+                <annotation>
+                	<documentation>Represent the dialog associated with the change</documentation>
+                </annotation>
+			</element>
+            <element name="RecordType" type="bt:RecordTypeType" maxOccurs="1" minOccurs="0">
+                <annotation>
+                	<documentation>Represents the type of the record being updated</documentation>
+                </annotation>
+            </element>
+        </sequence></complexType>
+
+    <complexType name="DataStructure">
+        <annotation>
+        	<documentation>Structure representing a generic data structure for representing data</documentation>
+        </annotation>
+        <sequence>
+			<element name="Name" type="string">
+				<annotation>
+					<documentation>Represents the name of the data element being described</documentation>
+				</annotation></element>
+			<element name="Value" type="string">
+				<annotation>
+					<documentation>Represents the value associated with the data element being described</documentation>
+				</annotation></element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    
+    <complexType name="DescriptionStructure">
+        <annotation>
+        	<documentation>Structure representing a generic description primarily used to represent dynamic labels</documentation>
+        </annotation>
+        <sequence>
+			<element name="Descriptor" type="bt:DescriptionType"
+				maxOccurs="1" minOccurs="1">
+                <annotation>
+                	<documentation>Represents the name of the descriptor</documentation>
+                </annotation>
+			</element>
+			<element name="Content" type="bt:DescriptionType"
+				maxOccurs="1" minOccurs="1">
+                <annotation>
+                	<documentation>Represents the value that the descriptor must take on</documentation>
+                </annotation>
+			</element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    
+    <complexType name="IdentifierStructure">
+        <annotation>
+        	<documentation>Structure representing a generic identifier</documentation>
+        </annotation>
+        <sequence>
+			<element name="Type" type="bt:IdentifierType"
+				maxOccurs="1" minOccurs="1">
+                <annotation>
+                	<documentation>Represents the type of identifier</documentation>
+                </annotation>
+			</element>
+			<element name="Value" type="bt:IdentifierValue"
+				maxOccurs="1" minOccurs="1">
+                <annotation>
+                	<documentation>Represents the value assigned to the identifier</documentation>
+                </annotation>
+			</element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    
+    <complexType name="ItemQtyStructure">
+        <annotation>
+        	<documentation>Structure representing detailed item quantity details</documentation>
+        </annotation>
+        <sequence>
+			<element name="ItemQty" type="bt:AmtType"
+				minOccurs="0" maxOccurs="1" >
+				<annotation>
+					<documentation>Represents the quantity of items</documentation>
+				</annotation></element>
+			<element name="ItemUnitCode" type="bt:UnitCodeType"
+				minOccurs="0" maxOccurs="1" >
+				<annotation>
+					<documentation>Represents the unit of measure in which the item's quantity is represented</documentation>
+				</annotation></element>
+			<element name="Metadata" type="bt:MetadataStructure"
+				minOccurs="0" maxOccurs="1" >
+				<annotation>
+					<documentation>Represents the application specific processing metadata associated with the item quantity details</documentation>
+				</annotation></element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+    
+    <complexType name="ApplicationMetadataStructure">
+        <annotation>
+        	<documentation>Structure representing application specific processing metadata</documentation>
+        </annotation>
+        <sequence>
+			<element name="ApplicationID" type="bt:ApplicationIDType">
+                <annotation>
+                	<documentation>Represents a unique, enterprise-wide defined ID associated with an application/system</documentation>
+                </annotation>
+			</element>
+			<element name="Data" type="bt:DataStructure"
+				minOccurs="0" maxOccurs="unbounded">
+                <annotation>
+                	<documentation>Represents the metadata</documentation>
+                </annotation>
+			</element>
+		</sequence>
+	<attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+
+		<complexType name="DeclarationStructure">
+		<annotation>
+			<documentation>
+				Structure representing a declaration of acceptance by
+				the party used primarily for confirming registration
+				details
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="Signature" type="string" maxOccurs="1"
+				minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the party's signature confirming
+						acceptance
+					</documentation>
+				</annotation>
+			</element>
+			<element name="DeclarationDate" type="date" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the date on which the declaration was
+						signed
+					</documentation>
+				</annotation>
+			</element>
+			<element name="Metadata" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the application specific processing
+						metadata associated with a declaration
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+		<attribute name="GUID" type="bt:UniqueIdentifierType"
+			use="optional">
+		</attribute>
+		<attribute name="LockedInd" type="bt:YesNoBlankIndType"
+			use="optional">
+		</attribute>
+	</complexType>
+	
+<complexType name="SARSRefIDNoStructure">
+        <annotation>
+        	<documentation>Structure representing the SARS assigned reference numbers for the tax products and licenses assigned to a party</documentation>
+        </annotation>
+        <sequence>
+        	<element name="TaxRefNo" type="bt:TaxRefNoType"
+        		minOccurs="0" maxOccurs="1">
+        		<annotation>
+        			<documentation>
+        				Represents the party's income tax reference
+        				number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="PayeRefNo" type="bt:TaxRefNoType"
+        		maxOccurs="1" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's PAYE tax reference number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="ExciseRefNo"
+        		type="bt:CustomsExciseClientTypeNoType" maxOccurs="1"
+        		minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's excise reference number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="VATRefNo" type="bt:TaxRefNoType"
+        		maxOccurs="1" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's VAT reference number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="CustomsRefNo"
+        		type="bt:CustomsExciseClientTypeNoType" maxOccurs="1"
+        		minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's customs code/Trade
+        				Identification Number (TIN)
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="SDLRefNo" type="bt:TaxRefNoType"
+        		maxOccurs="1" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's SDL tax reference number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="UIFRefNo" type="bt:TaxRefNoType"
+        		maxOccurs="1" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's UIF tax reference number
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="BusTradeClass" type="bt:BusTradeClassType"
+        		minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the business trade classification of
+        				the party
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="FSPLicenseNo" type="bt:FSPLicenseNoType"
+        		minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the financial service provider (FSP)
+        				number associated with the party
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="BusTradeActivity"
+        		type="bt:BusTradeActivityType" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the party's main business trade
+        				activity
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="TaxOffice" type="bt:OfficeCodeType"
+        		minOccurs="0" maxOccurs="1">
+        	</element>
+        	<element name="CustomsOffice" type="bt:CustomsOfficeCodeType"
+        		minOccurs="0" maxOccurs="1">
+        		<annotation>
+        			<documentation>
+        				Represents the SARS office associated with the
+        				party
+        			</documentation>
+        		</annotation>
+        	</element>
+        	<element name="Metadata" type="bt:MetadataStructure"
+        		maxOccurs="1" minOccurs="0">
+        		<annotation>
+        			<documentation>
+        				Represents the application specific processing
+        				metadata associated with a party's SARS assigned
+        				reference numbers for the tax products and
+        				licenses
+        			</documentation>
+        		</annotation>
+        	</element>
+        </sequence>
+        <attribute name="GUID" type="bt:UniqueIdentifierType" use="optional"></attribute><attribute name="LockedInd" type="bt:YesNoBlankIndType" use="optional"></attribute></complexType>
+	
+	<complexType name="StatusStructure">
+		<annotation>
+			<documentation>
+				Structure representing status information used across
+				all date where a status is relevant and must be
+				maintained
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="StatusID" type="bt:StatusIDType"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents a number used to identify a
+						particular status in the source
+						application/system
+					</documentation>
+				</annotation>
+			</element>
+			<element name="EffectiveDate" type="date" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the date from which the status is
+						effective
+					</documentation>
+				</annotation>
+			</element>
+			<element name="EndDate" type="date" maxOccurs="1"
+				minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the date until which the status is
+						effective
+					</documentation>
+				</annotation>
+			</element>
+			<element name="StatusCode" type="bt:StatusCodeType"
+				maxOccurs="1" minOccurs="1">
+				<annotation>
+					<documentation>
+						Represents a code associated with the status
+					</documentation>
+				</annotation>
+			</element>
+			<element name="StatusCodeDesc" type="bt:StatusCodeDescType"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents a free format description of the
+						status code
+					</documentation>
+				</annotation>
+			</element>
+			<element name="StatusReason" type="bt:ReasonType"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents a free format description of the
+						reason/motivation for the status
+					</documentation>
+				</annotation>
+			</element>
+			<element name="TaxRef" type="bt:TaxRefStructure"
+				maxOccurs="1" minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the details of a tax product that
+						this status is associated with
+					</documentation>
+				</annotation>
+			</element>
+			<element name="Metadata" type="bt:MetadataStructure"
+				minOccurs="0">
+				<annotation>
+					<documentation>
+						Represents the application specific processing
+						metadata associated with the status information
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+		<attribute name="GUID" type="bt:UniqueIdentifierType"
+			use="optional">
+		</attribute>
+		<attribute name="LockedInd" type="bt:YesNoBlankIndType"
+			use="optional">
+		</attribute>
+	</complexType>
+	
+	<complexType name="AccountingPeriodStructure">
+		<sequence>
+			<element name="FromDate" type="date" minOccurs="1"
+				maxOccurs="1">
+			</element>
+			<element name="ToDate" type="date" minOccurs="1"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	
+	
+    
+	<simpleType name="ActionType">
+		<restriction base="string">
+			<enumeration value="STOP"></enumeration>
+			<enumeration value="RELEASE"></enumeration>
+			<enumeration value="REJECT"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CodeType">
+		<restriction base="string">
+			<length value="3"></length>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="CustomsCodeType">
+		<restriction base="string">
+			<pattern value="\d{8}"></pattern>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="SupplierCodeType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LineType">
+		<restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="9999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShortCodeType">
+		<restriction base="string">
+			<pattern value="[A-Z]{2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WarehouseNoType">
+		<restriction base="string">
+			<length value="11"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransportCodeType">
+		<restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="9"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PaymentCodeType">
+		<restriction base="string">
+			<enumeration value="A"></enumeration>
+			<enumeration value="B"></enumeration>
+			<enumeration value="C"></enumeration>
+			<enumeration value="D"></enumeration>
+			<enumeration value="E"></enumeration>
+			<enumeration value="F"></enumeration>
+			<enumeration value="G"></enumeration>
+			<enumeration value="H"></enumeration>
+			<enumeration value="I"></enumeration>
+			<enumeration value="J"></enumeration>
+			<enumeration value="K"></enumeration>
+			<enumeration value="L"></enumeration>
+			<enumeration value="M"></enumeration>
+			<enumeration value="N"></enumeration>
+			<enumeration value="O"></enumeration>
+			<enumeration value="P"></enumeration>
+			<enumeration value="Q"></enumeration>
+			<enumeration value="R"></enumeration>
+			<enumeration value="S"></enumeration>
+			<enumeration value="T"></enumeration>
+			<enumeration value="U"></enumeration>
+			<enumeration value="V"></enumeration>
+			<enumeration value="W"></enumeration>
+			<enumeration value="Z"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TaxRefNoType">
+		<restriction base="string">
+			<pattern value="\w{8}|\w{10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IdentifierType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IssuedAtType">
+		<restriction base="string">
+			<length value="5"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FlightNoType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="GrossMassType">
+		<restriction base="decimal">
+			<totalDigits value="18"></totalDigits>
+			<fractionDigits value="2"></fractionDigits>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TerminalCodeType">
+		<restriction base="string">
+			<length value="2"></length>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TotalType">
+		<restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="99999999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IndicatorType">
+		<restriction base="string">
+			<maxLength value="1"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DecQuantityType">
+        <annotation>
+        	<documentation>WCO ID [013]</documentation>
+        </annotation>
+        <restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="99999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TariffCodeType">
+		<restriction base="string">
+			<pattern value="\d{9}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DecTradeAgreementType">
+		<restriction base="string">
+			<length value="11"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LargeDecimalTotalType">
+		<restriction base="decimal">
+			<totalDigits value="11"></totalDigits>
+			<fractionDigits value="2"></fractionDigits>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TotalAmountType">
+		<restriction base="long">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="999999999999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="InformationType">
+		<restriction base="string">
+			<length value="32"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProcedureType">
+		<restriction base="string">
+			<pattern value="\d{2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DecDescriptionType">
+		<restriction base="string">
+			<maxLength value="350"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContainerNoType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OfficeCodeType">
+		<restriction base="string">
+			<pattern value="[A-Z]{0,3}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PartyRelationshipIndType">
+		<restriction base="string">
+			<enumeration value="R"></enumeration>
+			<enumeration value="N"></enumeration>
+			<enumeration value="E"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DecTransactionTypeType">
+		<restriction base="string">
+			<enumeration value="1"></enumeration>
+			<enumeration value="4"></enumeration>
+			<enumeration value="5"></enumeration>
+			<enumeration value="9"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ValuationCodeType">
+		<restriction base="string">
+			<enumeration value=""></enumeration>
+			<enumeration value="1"></enumeration>
+			<enumeration value="2"></enumeration>
+			<enumeration value="3"></enumeration>
+			<enumeration value="4"></enumeration>
+			<enumeration value="5"></enumeration>
+			<enumeration value="6"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MessageSenderType">
+		<restriction base="string">
+			<length value="8"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DefermentNoType">
+		<restriction base="string">
+			<pattern value="\d{10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BankCodeType">
+		<restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="YesNoType">
+		<restriction base="string">
+			<enumeration value="Y"></enumeration>
+			<enumeration value="N"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ChangeAcknowledgementIndType">
+		<restriction base="int">
+			<minInclusive value="1"></minInclusive>
+			<maxInclusive value="4"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FullEmptyIndType">
+		<restriction base="string">
+			<enumeration value="4"></enumeration>
+			<enumeration value="5"></enumeration>
+			<enumeration value="7"></enumeration>
+			<enumeration value="8"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SealNoType">
+		<restriction base="string">
+			<length value="15"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ToBeCodedType">
+		<restriction base="int">
+			<minInclusive value="1"></minInclusive>
+			<maxInclusive value="2"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LargeTotalType">
+		<restriction base="long">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="99999999999"></maxInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TotalDecimalAmountType">
+		<restriction base="decimal">
+			<totalDigits value="12"></totalDigits>
+			<fractionDigits value="2"></fractionDigits>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CountableAmountType">
+		<restriction base="string">
+			<pattern value="\d{8}"></pattern>
+		</restriction>
+	</simpleType>
+		
+	<simpleType name="PreferenceCodeType">
+        <annotation>
+        	<documentation>WCO ID [164]</documentation>
+        </annotation>
+        <restriction base="string">
+			<enumeration value="100"></enumeration>
+			<enumeration value="200"></enumeration>
+			<enumeration value="300"></enumeration>
+			<enumeration value="400"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="ATPActionIndType">
+		<restriction base="string">
+			<enumeration value="401"></enumeration>
+			<enumeration value="403"></enumeration>
+			<enumeration value="413"></enumeration>
+			<enumeration value="414"></enumeration>
+			<enumeration value="415"></enumeration>
+			<enumeration value="416"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SARSIndType">
+		<restriction base="string">
+			<enumeration value="X"></enumeration>
+			<enumeration value="x"></enumeration>
+			<enumeration value=""></enumeration>
+		</restriction>
+	</simpleType>
+	
+
+	<simpleType name="DepositRefNoType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SIDType">
+		<restriction base="string">
+			<pattern value="\w{8}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChequeNoType">
+		<restriction base="string">
+			<pattern value="\d{0,10}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShortNameType">
+		<restriction base="string">
+			<maxLength value="30"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ActSectionType">
+		<restriction base="string">
+			<maxLength value="10"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AssessmentNoType">
+		<restriction base="string">
+			<pattern value="\d{0,20}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AccHolderRelationshipType">
+		<restriction base="string">
+			<enumeration value="OWN"></enumeration>
+			<enumeration value="JOINT"></enumeration>
+			<enumeration value="3RD_PARTY"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RelationshipType">
+		<restriction base="string">
+			<enumeration value="TAX_PRACTITIONER"></enumeration>
+			<enumeration value="CUSTOMS_CLEARER"></enumeration>
+			<enumeration value="OTHER"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="OtherDelegateCapacityType">
+		<restriction base="string">
+			<enumeration value="EMPLOYEE"></enumeration>
+			<enumeration value="NON_EMPLOYEE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="FunctionAssignmentType">
+		<restriction base="string">
+			<enumeration value="FULL_PROFILE_ADMIN"></enumeration>
+			<enumeration value="LIMITED_PROFILE_ADMIN"></enumeration>
+			<enumeration value="ACCOUNTING"></enumeration>
+			<enumeration value="LEGAL_SERVICES"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ReturnSubmissionTypeType">
+		<annotation>
+			<documentation></documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="INITIAL"></enumeration>
+			<enumeration value="SIMULATION"></enumeration>
+			<enumeration value="TAXPAYER_REVISED"></enumeration>
+			<enumeration value="INTERNAL_REVISED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RiskAssessmentOutcomeTypeType">
+		<restriction base="string">
+			<enumeration value="RISK"></enumeration>
+			<enumeration value="NO_RISK"></enumeration>
+			<enumeration value="CANCEL"></enumeration>
+			<enumeration value="FINALISE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CaseTypeType">
+		<restriction base="string">
+			<enumeration value="O"></enumeration>
+			<enumeration value="A"></enumeration>
+			<enumeration value="I"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CaseStepNameType">
+		<restriction base="string">
+			<enumeration value="INITIAL"></enumeration>
+			<enumeration value="PLAN"></enumeration>
+			<enumeration value="REVIEW"></enumeration>
+			<enumeration value="EXECUTE"></enumeration>
+			<enumeration value="FINALISE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CaseOutcomeType">
+		<restriction base="string">
+			<enumeration value="DECLARATION_IN_ORDER_:_RELEASE_AUDIT"></enumeration>
+			<enumeration
+				value="DECLARATION_NOT_IN_ORDER_:_REVISE_ASSESSMENT">
+			</enumeration>
+			<enumeration
+				value="ASSURANCE_AUDIT_CASE_:_AWAITING_AUDIT">
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VATAssessmentOutcomeTypeType">
+		<restriction base="string">
+			<enumeration value="APPROVED"></enumeration>
+			<enumeration value="REJECTED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AssessmentOutcomeCategoryType">
+		<restriction base="string">
+			<enumeration value="REDUCED"></enumeration>
+			<enumeration value="ESTIMATED"></enumeration>
+			<enumeration value="ADDITIONAL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AssessmentTypeType">
+		<restriction base="string">
+			<enumeration value="IT34"></enumeration>
+			<enumeration value="VAT217PE"></enumeration>
+			<enumeration value="VAT217FE"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="PromiseToPayActionType">
+    <restriction base="string">
+     <enumeration value="SimulateDeferment"></enumeration>
+     <enumeration value="SimulateStopOrder"></enumeration>
+     <enumeration value="CreateDeferment"></enumeration>
+     <enumeration value="CreateStopOrder"></enumeration>
+     <enumeration value="CancelStopOrder"></enumeration>
+     <enumeration value="CancelDeferment"></enumeration>
+     <enumeration value="EnquiryDeferment"></enumeration>
+     <enumeration value="CreateInstallment"></enumeration>
+     <enumeration value="ReadInstallment"></enumeration>
+     <enumeration value="CancelInstallment"></enumeration>
+     </restriction>
+    </simpleType>
+
+	<simpleType name="TransIDType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OrganisationTypeType">
+		<restriction base="string">
+			<enumeration value="C"></enumeration>
+			<enumeration value="T"></enumeration>
+			<enumeration value="O"></enumeration>
+			<enumeration value="I"></enumeration>
+			<enumeration value="CC"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BeneficiaryAccountNoType">
+		<restriction base="string">
+		<pattern value="[A-Z0-9\s\-]{0,10}"/>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PaymentPeriodType">
+		<restriction base="string">
+			<enumeration value="01"></enumeration>
+			<enumeration value="02"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="EncodingType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="TemplateIDType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="TemplateLoginIDType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AttachmentNameType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="AttachmentDataType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="MessageNotesType">
+		<restriction base="string"></restriction>
+	</simpleType>
+	
+	<simpleType name="AddressLineType">
+		<restriction base="string">
+    		<maxLength value="35"></maxLength>
+    	</restriction>
+    </simpleType>
+
+	<simpleType name="OperationalTransactionTypeType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="FactGroupType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="FactType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<simpleType name="FactValue">
+		<restriction base="string"></restriction>
+	</simpleType>
+	
+		<annotation>
+					<documentation>
+						Represents the SAP PenaltyType, added on 03/06/2011 by Tebogo Ngqobe
+					</documentation>
+				</annotation>
+	<simpleType name="SAPPenaltyTypeType">
+		<restriction base="string">
+			<maxLength value="35"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NoBankAccountReasonType">
+		<restriction base="string">
+			<enumeration value="NON_RESIDENTS"></enumeration>
+			<enumeration value="FICA"></enumeration>
+			<enumeration value="NAME_CHANGES"></enumeration>
+            <enumeration value="BLACKLISTED"></enumeration>
+            <enumeration value="INSOLVENCY_LIQUIDATION"></enumeration>
+			<enumeration value="COMPANY_DEREGISTRATION"></enumeration>
+			<enumeration value="ESTATE"></enumeration>
+			<enumeration value="DORMANCY"></enumeration>
+			<enumeration value="BANKRUPTCY"></enumeration>
+			<enumeration value="OTHER"></enumeration>
+		</restriction>
+	</simpleType>
+</schema>

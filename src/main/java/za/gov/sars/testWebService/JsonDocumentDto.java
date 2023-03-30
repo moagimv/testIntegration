@@ -46,6 +46,14 @@ public class JsonDocumentDto {
     private Integer fileSize;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    
+    public JsonDocumentDto(){
+        
+    }
+    
+    public JsonDocumentDto(String results){
+        
+    }
 
     @JsonProperty("properties")
     public Properties getProperties() {

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<schema
+	targetNamespace="http://www.sars.gov.za/enterpriseMessagingModel/GeneratePDFDocument/xml/schemas/"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:RLA="http://www.sars.gov.za/enterpriseMessagingModel/GeneratePDFDocument/xml/schemas/">
+	
+	<annotation>
+		<documentation>
+			2021-01-18 Olebogeng Thothela, Changed Value length restriction to infinity under ItemStructure.
+			{this schema version is used on new projects, not for RLA projects}
+		</documentation>
+	    <documentation>
+			2020-01-16 Mannini Mopeli, Changed Value length restriction to 2500 under ItemStructure.
+			{this schema version is used on new projects, not for RLA projects}
+		</documentation>
+		<documentation>
+			2017-02-07 Christina Maluleke, Schema Defined
+		</documentation>
+	</annotation>
+
+	<complexType name="GeneratePDFDocumentStructure">
+		<all>
+
+			<element name="Header" type="RLA:HeaderStructure"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="ContentItems" type="RLA:ItemsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="Tables" maxOccurs="1" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="Table" minOccurs="1"
+							maxOccurs="99">
+							<complexType>
+								<all>
+									<element name="TableName"
+										maxOccurs="1" minOccurs="0">
+										<simpleType>
+											<restriction
+												base="string">
+												<minLength value="1"></minLength>
+												<maxLength
+													value="250">
+												</maxLength>
+											</restriction>
+										</simpleType>
+									</element>
+									<element name="ColumnNames"
+										maxOccurs="1" minOccurs="1">
+										<complexType>
+											<sequence>
+												<element
+													name="ColumnName" maxOccurs="99" minOccurs="1">
+													<simpleType>
+														<restriction
+															base="string">
+															<minLength
+																value="1">
+															</minLength>
+															<maxLength
+																value="250">
+															</maxLength>
+														</restriction>
+													</simpleType>
+												</element>
+											</sequence>
+										</complexType>
+									</element>
+									<element name="Rows" maxOccurs="1"
+										minOccurs="1">
+										<complexType>
+											<sequence>
+												<element name="Row"
+													maxOccurs="9999" minOccurs="1">
+													<complexType>
+														<sequence>
+															<element
+																name="Items" type="RLA:ItemsType" maxOccurs="1"
+																minOccurs="0">
+															</element>
+														</sequence>
+													</complexType>
+												</element>
+											</sequence>
+										</complexType>
+									</element>
+								</all>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Paragraphs" type="RLA:ParagraphsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="Content" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="Forms" maxOccurs="1" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="Form" maxOccurs="99" minOccurs="1">
+							<simpleType>
+								<restriction base="string">
+									<minLength value="1"></minLength>
+									<maxLength value="2000000"></maxLength>
+								</restriction>
+							</simpleType></element>
+					</sequence>
+				</complexType></element>
+			<element name="Footer" type="RLA:ItemsType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+
+			<element name="Metadata" type="RLA:ItemsType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</all>
+	</complexType>
+
+	<element name="GeneratePDFDocument" type="RLA:GeneratePDFDocumentStructure">
+	</element>
+	<complexType name="ParagraphsType">
+		<sequence>
+			<element name="Paragraph" minOccurs="1" maxOccurs="99" type="string">
+
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ItemStructure">
+		<sequence>
+			<element name="Name" type="RLA:NameType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Value" type="RLA:ValueType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<simpleType name="NameType">
+		<restriction base="string">
+			<minLength value="1"></minLength>
+			<maxLength value="100"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="ValueType">
+		<restriction base="string">
+			<minLength value="1"></minLength>
+			<!--<maxLength value="4000"></maxLength>-->
+		</restriction>
+	</simpleType>
+	<simpleType name="HeaderType">
+		<restriction base="string">
+			<minLength value="1"></minLength>
+			<maxLength value="250"></maxLength>
+		</restriction>
+	</simpleType>
+	<complexType name="ItemsType">
+		<sequence>
+			<element name="Item" type="RLA:ItemStructure" maxOccurs="9999"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="HeaderStructure">
+		<all>
+
+			<element name="ContactDetail" type="RLA:ItemsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="Details" type="RLA:ItemsType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AddressDetails" type="RLA:ItemsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="OtherItems" type="RLA:ItemsType" maxOccurs="1" minOccurs="0"></element>
+		</all>
+	</complexType>
+</schema>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.sars.gov.za/enterpriseMessagingModel/PDFDocumentGenerationManagement/xml/schemas/version/1.0"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sars.gov.za/enterpriseMessagingModel/PDFDocumentGenerationManagement/xml/schemas/version/1.0" xmlns:pref="http://www.sars.gov.za/forms/" xmlns:RLA="http://www.sars.gov.za/enterpriseMessagingModel/GeneratePDFDocument/xml/schemas/" xmlns:Q1="http://www.sars.gov.za/enterpriseMessagingModel/GeneratePDFDocument/xml/schemas/">
+
+  <import schemaLocation="SARSGeneratePDFDocumentV2.0.xsd" namespace="http://www.sars.gov.za/enterpriseMessagingModel/GeneratePDFDocument/xml/schemas/"></import>
+  <annotation>
+    <documentation>
+      2017-02-07 Christina Maluleke, Schema Defined
+    </documentation>
+
+  </annotation>
+  <element name="PDFDocumentGenerationManagementRequest"
+		type="tns:PDFDocumentGenerationRequestStructure">
+  </element>
+
+  <element name="PDFDocumentGenerationManagementResponse"
+		type="tns:PDFDocumentGenerationResponseStructure">
+  </element>
+
+  <complexType name="PDFDocumentGenerationRequestStructure">
+    <all>
+      <element name="RequestOperation"
+				type="tns:RequestOperationType" maxOccurs="1" minOccurs="1">
+      </element>
+      <element name="Details" maxOccurs="1" minOccurs="1">
+        <complexType>
+          <sequence>
+            <element name="Detail"
+							type="tns:DetailStructure" maxOccurs="20" minOccurs="1">
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </all>
+
+  </complexType>
+
+  <complexType name="PDFDocumentGenerationResponseStructure">
+    <all>
+      <element name="PDFDocuments" maxOccurs="1" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="PDFDocument" maxOccurs="20"
+							minOccurs="1">
+              <complexType>
+                <all>
+                  <element name="Content"
+										maxOccurs="1" minOccurs="0">
+                    <simpleType>
+                      <restriction
+												base="string">
+                        <maxLength
+													value="2000000">
+                        </maxLength>
+                        <minLength value="1"></minLength>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                </all>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </all>
+  </complexType>
+
+  <simpleType name="RequestOperationType">
+    <restriction base="string">
+      <enumeration value="GENERATE_LETTER"></enumeration>
+      <enumeration value="GENERATE_FORM"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="DetailStructure">
+    <all>
+
+
+
+
+
+      <element ref="Q1:GeneratePDFDocument" maxOccurs="1" minOccurs="0"></element>
+    </all>
+  </complexType>
+  <complexType name="ItemsType">
+    <sequence>
+      <element name="Item" type="tns:ItemStructure"
+				maxOccurs="9999" minOccurs="1">
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="ItemStructure">
+    <sequence>
+      <element name="Name" type="tns:NameType" maxOccurs="1"
+				minOccurs="1">
+      </element>
+      <element name="Value" type="tns:ValueType" maxOccurs="1"
+				minOccurs="1">
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="ParagraphsType">
+    <sequence>
+      <element name="Paragraph" minOccurs="1" maxOccurs="99">
+        <simpleType>
+          <restriction base="string">
+            <minLength value="1"></minLength>
+            <maxLength value="500"></maxLength>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <simpleType name="NameType">
+    <restriction base="string">
+      <minLength value="1"></minLength>
+      <maxLength value="100"></maxLength>
+    </restriction>
+  </simpleType>
+  <simpleType name="ValueType">
+    <restriction base="string">
+      <minLength value="1"></minLength>
+      <maxLength value="250"></maxLength>
+    </restriction>
+  </simpleType>
+</schema>

@@ -7,6 +7,11 @@ package za.gov.sars.test;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,7 +29,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import za.gov.sars.testWebService.AttachmentRestClient;
 import za.gov.sars.testWebService.JsonDocumentDto;
+import za.gov.sars.testWebService.PdfWebServiceClient;
 import za.gov.sars.testWebService.TestDataSourceConfiguration;
+import za.gov.sars.testWebService.XmlToObject;
+import za.gov.sars.testWebService.pojo.PDFDocumentGenerationManagementResponse;
 
 /**
  *
@@ -38,6 +46,12 @@ public class WebServiceTestCase {
 
     @Autowired
     private AttachmentRestClient attachmentRestClient;
+    
+    @Autowired
+    private XmlToObject xmlToObject;
+    
+    @Autowired
+    private PdfWebServiceClient pdfWebServiceClient;
 
     public WebServiceTestCase() {
     }
@@ -114,8 +128,42 @@ public class WebServiceTestCase {
     }
     
     @Test
+    @Ignore
     public void testB() {
         ResponseEntity<String> details = attachmentRestClient.uploadDocument("");
         System.out.println("upload Results: " + details.getStatusCode());
     }
+    
+    @Test
+    @Ignore
+    public void testC(){
+        String objectId = attachmentRestClient.uploadRestDocument();
+        System.out.println("upload Results: " + objectId);
+    }
+    
+    @Test
+    public void testD(){
+        System.out.println("Read Sample XML Begins");
+        xmlToObject.testXmlToObject();
+         System.out.println("Read Sample XML End");
+    }
+    
+    @Test
+    public void testE(){
+        try {
+            System.out.println("Read Letter Generation XML Begins");
+            File file = new File("LetterGenerated.xml");
+            JAXBContext jaxbContext = JAXBContext.newInstance(PDFDocumentGenerationManagementResponse.class);
+
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            PDFDocumentGenerationManagementResponse managementResponse = (PDFDocumentGenerationManagementResponse) jaxbUnmarshaller.unmarshal(file);
+            System.out.println("Generated PDF Content: " + managementResponse.getPdfDocuments());
+            
+            System.out.println("Read Letter Generation XML End");
+        } catch (JAXBException ex) {
+            Logger.getLogger(WebServiceTestCase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 }

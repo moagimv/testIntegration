@@ -240,6 +240,11 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230227</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>test.web.service</finalName>
@@ -290,10 +295,12 @@
                 <configuration> 
                     <schemaLanguage>WSDL</schemaLanguage> 
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory> 
-                    <generatePackage>sars.pca.system.gen</generatePackage> 
+                    <generatePackage>za.gov.sars.testWebService.gen</generatePackage> 
                     <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory> 
                     <schemaIncludes> 
                         <include>Service1.wsdl</include> 
+                        <!--include>SARSPDFDocumentGenerationManagementV1.0.xsd</include-->
+                        <!--include>PDFDocumentGenerationManagementResponse.xsd</include-->
                     </schemaIncludes> 
                 </configuration> 
             </plugin>                           

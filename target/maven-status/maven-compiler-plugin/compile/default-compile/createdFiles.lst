@@ -1,4 +1,11 @@
+za\gov\sars\testWebService\PdfWebServiceClientConfig.class
+za\gov\sars\testWebService\gen\GeneratePdf.class
+za\gov\sars\testWebService\gen\package-info.class
+za\gov\sars\testWebService\JsonDocumentDto.class
 za\gov\sars\testWebService\DatasourceUtility.class
+za\gov\sars\testWebService\Properties.class
+za\gov\sars\testWebService\gen\GeneratePdfResponse.class
+za\gov\sars\testWebService\gen\ObjectFactory.class
+za\gov\sars\testWebService\PdfWebServiceClient.class
 za\gov\sars\testWebService\TestDataSourceConfiguration.class
-za\gov\sars\testWebService\AttachmentRestClient$1.class
 za\gov\sars\testWebService\AttachmentRestClient.class
